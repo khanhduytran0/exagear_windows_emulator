@@ -7,12 +7,13 @@ import com.eltechs.axs.xserver.ViewFacade;
 public class PointerEventReporter implements PointerEventListener {
     final ViewOfXServer host;
     final int maxDivisor = 20;
-    final float maximalDelta = ((float) (Math.min(this.xServerFacade.getScreenInfo().heightInPixels, this.xServerFacade.getScreenInfo().widthInPixels) / this.maxDivisor));
+    final float maximalDelta;
     private final ViewFacade xServerFacade;
 
     public PointerEventReporter(ViewOfXServer viewOfXServer) {
         this.host = viewOfXServer;
         this.xServerFacade = viewOfXServer.getXServerFacade();
+        this.maximalDelta = ((float) (Math.min(this.xServerFacade.getScreenInfo().heightInPixels, this.xServerFacade.getScreenInfo().widthInPixels) / this.maxDivisor));
     }
 
     private void sendCoordinates(float f, float f2) {

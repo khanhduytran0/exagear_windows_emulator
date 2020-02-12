@@ -20,12 +20,14 @@ import com.android.vending.billing.IInAppBillingService;
 import com.android.vending.billing.IInAppBillingService.Stub;
 */
 import com.eltechs.axs.helpers.Assert;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
 import org.json.JSONException;
 
 public class IabHelper {
@@ -187,7 +189,7 @@ public class IabHelper {
                     }
                 }
             };
-            Assert.isTrue(this.mContext.bindService(intent, this.mServiceConn, 1));
+            Assert.isTrue(this.mContext.bindService(intent, this.mServiceConn, Context.BIND_AUTO_CREATE));
         }
     }
 
@@ -385,11 +387,11 @@ public class IabHelper {
             }
         }
 		*/
-		
-		// MOD: Bypass In-app purchase
-		if (onIabPurchaseFinishedListener != null) {
-			onIabPurchaseFinishedListener.onIabPurchaseFinished(new IabResult(0, null), null);
-		}
+
+        // MOD: Bypass In-app purchase
+        if (onIabPurchaseFinishedListener != null) {
+            onIabPurchaseFinishedListener.onIabPurchaseFinished(new IabResult(0, null), null);
+        }
     }
 
     public boolean handleActivityResult(int i, int i2, Intent intent) {
@@ -553,18 +555,17 @@ public class IabHelper {
         final QueryInventoryFinishedListener queryInventoryFinishedListener2 = queryInventoryFinishedListener;
         Runnable r0 = new Runnable() {
             public void run() {
-                final IabResult iabResult; // = new IabResult(0, "Inventory refresh successful.");
-                final Inventory inventory; // = new Inventory();
-				
+                IabResult iabResult = new IabResult(0, "Inventory refresh successful.");
+                Inventory inventory = new Inventory();
+
                 try {
                     inventory = IabHelper.this.queryInventory(z2, list2, null);
-					iabResult = new IabResult(0, "Inventory refresh successful.");
+                    iabResult = new IabResult(0, "Inventory refresh successful.");
                 } catch (IabException e) {
-					// Create a fake Inventory.
-					inventory = new Inventory();
-                    iabResult = e.getResult();
+                    // Create a fake Inventory.
+
                 }
-				
+/*
                 IabHelper.this.flagEndAsync();
                 if (!IabHelper.this.mDisposed && queryInventoryFinishedListener2 != null) {
                     handler.post(new Runnable() {
@@ -575,6 +576,7 @@ public class IabHelper {
                         }
                     });
                 }
+ */
             }
         };
         executorService.submit(r0);
