@@ -9,6 +9,7 @@ import com.eltechs.axs.xserver.impl.drawables.Visual;
 import java.util.Collection;
 import java.util.LinkedList;
 import java.util.Map.Entry;
+import java.util.Set;
 import java.util.TreeMap;
 
 @POD({"root", "colormap", "whitePixel", "blackPixel", "currentInputMasks", "widthInPixels", "heightInPixels", "widthInMillimeters", "heightInMillimeters", "minInstalledMaps", "maxInstalledMaps", "rootVisual", "backingStores", "saveUnders", "rootDepth", "allowedDepthsCount", "allowedDepths"})
