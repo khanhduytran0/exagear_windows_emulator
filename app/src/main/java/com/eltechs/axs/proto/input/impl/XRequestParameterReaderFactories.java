@@ -95,9 +95,6 @@ public class XRequestParameterReaderFactories {
             if (rawType == Drawable.class) {
                 return new DrawableParameterReader(access, parameterDescriptor);
             }
-			if (rawType == Event.class) {
-				return new EventParameterReader(access);
-			}
             if (rawType == GraphicsContext.class) {
                 return new GraphicsContextParameterReader(access, parameterDescriptor);
             }
