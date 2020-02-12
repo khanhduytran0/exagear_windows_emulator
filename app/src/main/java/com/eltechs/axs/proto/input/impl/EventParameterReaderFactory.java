@@ -52,20 +52,12 @@ public class EventParameterReaderFactory {
             if (rawType == Integer.TYPE || rawType == Integer.class) {
                 return new IntegerParameterReader(requestDataReader, parameterDescriptor);
             }
-			/*
-			if (rawType == String.class) {
-                return XRequestParameterReaderFactories.createString8Reader(parameterDescriptor, configurationContext);
-            }
-			*/
             if (rawType == Atom.class) {
                 return new AtomParameterReader(requestDataReader, parameterDescriptor);
             }
             if (rawType == Drawable.class) {
                 return new DrawableParameterReader(requestDataReader, parameterDescriptor);
             }
-			if (rawType == Event.class) {
-				return new EventParameterReader(requestDataReader);
-			}
             if (rawType == GraphicsContext.class) {
                 return new GraphicsContextParameterReader(requestDataReader, parameterDescriptor);
             }
