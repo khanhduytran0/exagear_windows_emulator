@@ -3,6 +3,8 @@ Source code of Exagear Windows Emulator.
 
 ***Note: Only Java codes were decompiled!***
 
+**Currently not working in Android Studio!**
+
 # Features
 - Cleaned license check and In-app purchase code. 
 - (Experimental) Added an option to run Linux x86.
