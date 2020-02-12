@@ -39,7 +39,7 @@ public class EventParameterReaderFactory {
     public static RequestParamReadersFactory INSTANCE = new RequestParamReadersFactory() {
         public ParameterReader createReader(ParameterDescriptor parameterDescriptor, ConfigurationContext configurationContext) {
             RequestDataReader requestDataReader = NormalRequestDataReader.INSTANCE;
-            Class<ByteBuffer> rawType = (Class<ByteBuffer>) parameterDescriptor.getRawType();
+            Class<?> rawType = (Class<?>) parameterDescriptor.getRawType();
             if (rawType == Boolean.TYPE || rawType == Boolean.class) {
                 return new BooleanParameterReader(requestDataReader, parameterDescriptor);
             }

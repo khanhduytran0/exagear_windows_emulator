@@ -52,7 +52,7 @@ public class Screen {
         }
         this.allowedDepthsCount = (byte) treeMap.size();
         this.allowedDepths = new Depth[treeMap.size()];
-        for (Entry entry : treeMap.entrySet()) {
+        for (Entry entry : (Set<Entry>) treeMap.entrySet()) {
             int i2 = i + 1;
             this.allowedDepths[i] = new Depth(((Integer) entry.getKey()).intValue(), (Collection) entry.getValue());
             i = i2;

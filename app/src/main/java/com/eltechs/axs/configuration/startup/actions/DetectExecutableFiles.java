@@ -94,7 +94,7 @@ public class DetectExecutableFiles<StateClass extends AvailableExecutableFilesAw
         this.useCache = z;
     }
 
-    private final List<File> removeDuplicatedFiles(List<File> list) {
+    private final File[] removeDuplicatedFiles(List<File> list) {
         ArrayList arrayList = new ArrayList();
         HashSet hashSet = new HashSet();
         for (File file : list) {
@@ -103,7 +103,7 @@ public class DetectExecutableFiles<StateClass extends AvailableExecutableFilesAw
                 hashSet.add(file.getAbsolutePath());
             }
         }
-        return arrayList;
+        return (File[]) arrayList.toArray(new File[0]);
     }
 
     public StartupActionInfo getInfo() {

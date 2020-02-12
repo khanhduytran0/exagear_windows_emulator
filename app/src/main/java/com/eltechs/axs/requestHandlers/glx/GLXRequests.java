@@ -81,7 +81,7 @@ public class GLXRequests extends HandlerObjectBase {
     @Locks({"DRAWABLES_MANAGER"})
     public void GetVisualConfigs(XResponse xResponse, @RequestParam int i) throws IOException, XProtocolError {
         CheckGLXScreenValid(i);
-        final Collection supportedVisuals = this.xServer.getDrawablesManager().getSupportedVisuals();
+        final Collection<Visual> supportedVisuals = this.xServer.getDrawablesManager().getSupportedVisuals();
         final int onWireLength = PODWriter.getOnWireLength(new VisualConfig((Visual) supportedVisuals.iterator().next()));
         xResponse.sendSuccessReplyWithPayload((byte) 0, new ResponseDataWriter() {
             public void write(ByteBuffer byteBuffer) {

@@ -24,7 +24,8 @@ public class AutowiringEnhancedObject<T> {
 
     public static <T> AutowiringEnhancedObject<T> addAutowiring(Class<?> cls) {
         final Container container2 = new Container();
-        return new AutowiringEnhancedObject<>(Proxy.newProxyInstance(cls.getClassLoader(), new Class[]{cls}, new InvocationHandler() {
+        return new AutowiringEnhancedObject<T>((T) Proxy.newProxyInstance(cls.getClassLoader(), new Class[]{cls}, new InvocationHandler() {
+            @Override
             public Object invoke(Object obj, Method method, Object[] objArr) throws Throwable {
                 String access$000 = AutowiringEnhancedObject.getPropertyNameOfSetter(method.getName());
                 String access$100 = AutowiringEnhancedObject.getPropertyNameOfGetter(method.getName());

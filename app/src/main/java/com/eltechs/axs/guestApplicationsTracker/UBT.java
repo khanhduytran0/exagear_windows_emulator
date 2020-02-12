@@ -8,6 +8,7 @@ import com.eltechs.axs.environmentService.components.GuestApplicationsTrackerCom
 import com.eltechs.axs.environmentService.components.SysVIPCEmulatorComponent;
 import com.eltechs.axs.environmentService.components.VFSTrackerComponent;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -96,7 +97,7 @@ public abstract class UBT {
         if (!fileNameReplacements.isEmpty()) {
             StringBuilder sb8 = new StringBuilder();
             sb8.append("--file-name-replacements=");
-            for (Entry entry : fileNameReplacements.entrySet()) {
+            for (Entry entry : (Set<Entry>) fileNameReplacements.entrySet()) {
                 sb8.append((String) entry.getKey());
                 sb8.append(',');
                 sb8.append((String) entry.getValue());

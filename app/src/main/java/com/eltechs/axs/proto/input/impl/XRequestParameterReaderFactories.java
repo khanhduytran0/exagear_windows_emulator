@@ -73,7 +73,7 @@ public class XRequestParameterReaderFactories {
 
         private ParameterReader createSimpleReader(ParameterDescriptor parameterDescriptor, ConfigurationContext configurationContext) {
             RequestDataReader access = XRequestParameterReaderFactories.selectRequestDataReaderForParameter(parameterDescriptor);
-            Class<ByteBuffer> rawType = (Class<ByteBuffer>) parameterDescriptor.getRawType();
+            Class<?> rawType = (Class<?>) parameterDescriptor.getRawType();
             if (rawType == Boolean.TYPE || rawType == Boolean.class) {
                 return new BooleanParameterReader(access, parameterDescriptor);
             }

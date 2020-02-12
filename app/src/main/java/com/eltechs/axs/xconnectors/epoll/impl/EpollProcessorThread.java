@@ -14,7 +14,7 @@ import java.util.Queue;
 public class EpollProcessorThread<Context> extends Thread {
     private final int batchSize;
     private final BufferSizeConfiguration bufferSizeConfiguration;
-    private final ClientsWithUnprocessedMessagesQueue clientsWithUnprocessedMessages = new ClientsWithUnprocessedMessagesQueue<>();
+    private final ClientsWithUnprocessedMessagesQueue clientsWithUnprocessedMessages = new ClientsWithUnprocessedMessagesQueue();
     private final ConnectionHandler<Context> connectionHandler;
     private final ConnectionListener connectionListener;
     @UsedByNativeCode

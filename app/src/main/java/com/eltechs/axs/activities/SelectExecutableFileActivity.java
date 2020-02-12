@@ -67,7 +67,7 @@ public class SelectExecutableFileActivity<StateClass extends ApplicationStateBas
 
         public Adapter() {
             ArrayList arrayList = new ArrayList(supportedExecutableFiles.size() + otherExecutableFiles.size());
-            for (DetectedExecutableFile parentDir : CompositeCollection.of((Collection) supportedExecutableFiles, (Collection) otherExecutableFiles)) {
+            for (DetectedExecutableFile parentDir : (Collection<DetectedExecutableFile>) CompositeCollection.of((Collection) supportedExecutableFiles, (Collection) otherExecutableFiles)) {
                 arrayList.add(parentDir.getParentDir().getAbsolutePath());
             }
             this.commonPathPrefixLength = calculateCommonPrefixLength(arrayList);
