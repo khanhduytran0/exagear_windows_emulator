@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="48.0dip" android:width="48.0dip" android:viewportWidth="48.0" android:viewportHeight="48.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ffffffff" android:pathData="M43.5 20.081l0 -3.405A6.065 6.065 0 0 0 37.591 10.5l-4.091 0 0 9.581z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ffffffff" android:pathData="M23.5 20.081l0 -3.405A6.065 6.065 0 0 1 29.409 10.5l4.091 0 0 9.581z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ffffffff" android:pathData="M43.5 20.952l0 -0.871 -20 0 0 11.037a6.177 6.177 0 0 0 5.909 6.382l8.182 0A6.177 6.177 0 0 0 43.5 31.118l0 -10.6" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ffffffff" android:pathData="M7 4.5l9 0 0 39 -9 0z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:pathData="M7 36.5l9 0" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:pathData="M7 11.5l9 0" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:pathData="M9.5 9l2 -2.5 2 2.5" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeLineCap="round" android:strokeMiterLimit="10.0" />
+    <path android:pathData="M9.5 39l2 2.5 2 -2.5" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeLineCap="round" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ff808080" android:pathData="M33.441999 16.613001l0.115 0c1.2465 0 2.25 1.0035 2.25 2.25l0 4.16c0 1.2465 -1.0035 2.25 -2.25 2.25l-0.115 0c-1.2465 0 -2.25 -1.0035 -2.25 -2.25l0 -4.16c0 -1.2465 1.0035 -2.25 2.25 -2.25z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+</vector>

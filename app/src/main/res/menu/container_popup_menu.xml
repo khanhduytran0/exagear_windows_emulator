@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/container_run_explorer" android:title="@string/cont_popup_runexplorer" />
+	<item android:id="@+id/container_run_linuxenv" android:title="@string/cont_popup_runlinuxenv" />
+    <item android:id="@+id/container_install_package" android:title="@string/cont_popup_installpkg" />
+    <item android:id="@+id/container_properties" android:title="@string/cont_popup_properties" />
+    <item android:id="@+id/container_clone" android:title="@string/cont_popup_clone" />
+    <item android:id="@+id/container_delete" android:title="@string/cont_popup_delete" />
+</menu>

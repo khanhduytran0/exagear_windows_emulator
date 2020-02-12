@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/title_bar_background" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sef_application_logo" android:scaleType="fitCenter" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="15.0dip" android:text="@string/sef_description" />
+        <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:layout_width="10.0dip" android:layout_height="0.0dip" />
+        <ImageButton android:layout_gravity="center_vertical" android:background="@android:color/transparent" android:longClickable="false" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/refresh" android:scaleType="fitCenter" android:onClick="onRequestRescanClicked" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:layout_width="10.0dip" android:layout_height="0.0dip" />
+        <ImageButton android:layout_gravity="center|right" android:background="@android:color/transparent" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/sef_plus" android:scaleType="fitCenter" android:onClick="onAddMoreGamesClicked" />
+        <TextView android:textAppearance="?android:textAppearanceSmall" android:layout_width="5.0dip" android:layout_height="0.0dip" />
+    </LinearLayout>
+    <include layout="@layout/select_executable_file_promo" />
+    <ListView android:id="@+id/list_of_available_executable_files" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@android:color/transparent" android:dividerHeight="1.0dip" />
+</LinearLayout>

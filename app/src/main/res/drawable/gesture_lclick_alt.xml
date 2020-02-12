@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector android:height="48.0dip" android:width="48.0dip" android:viewportWidth="48.0" android:viewportHeight="48.0"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <path android:fillColor="#ffffffff" android:pathData="M45.5 25.5l0 -3.909A7.112 7.112 0 0 0 38.409 14.5l-4.909 0 0 11z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ff808080" android:pathData="M21.5 25.5l0 -3.909A7.112 7.112 0 0 1 28.591 14.5l4.909 0 0 11z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ffffffff" android:pathData="M45.5 26.5l0 -1 -24 0 0 12.673a7.233 7.233 0 0 0 7.091 7.327l9.818 0A7.233 7.233 0 0 0 45.5 38.173L45.5 26" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ffffffff" android:pathData="M33.219 22l0.562 0C35.010326 22 36 22.989674 36 24.219l0 4.562C36 30.010326 35.010326 31 33.781 31l-0.562 0C31.989674 31 31 30.010326 31 28.781l0 -4.562C31 22.989674 31.989674 22 33.219 22Z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <path android:fillColor="#ffffffff" android:pathData="M2.5 3.5l20 0 0 10 -20 0z" android:strokeColor="#ff000000" android:strokeWidth="1.0" android:strokeMiterLimit="10.0" />
+    <group android:scaleX="0.878" android:translateX="5.5" android:translateY="11.5">
+        <path android:fillColor="#ff000000" android:pathData="M6.1231809 0L4.7828245 0 4.250012 -1.386145l-2.4392821 0L1.3070556 0 0 0l2.3768432 -6.1023679 1.302893 0L6.1231809 0Zm-2.2686156 -2.4143065l-0.8408447 -2.2644531 -0.8241943 2.2644531 1.665039 0z" />
+        <path android:fillColor="#ff000000" android:pathData="M6.8095279 0l0 -6.0524167 1.2321289 0 0 5.0242551 3.0636722 0 0 1.0281616 -4.2958011 0z" />
+        <path android:fillColor="#ff000000" android:pathData="M12.724884 0l0 -5.0700437 -1.81073 0 0 -1.0323242 4.849426 0 0 1.0323242 -1.806567 0 0 5.0700437 -1.232129 0z" />
+    </group>
+</vector>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textAppearance="?android:textAppearanceLarge" android:textStyle="bold" android:id="@+id/header" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="Header" android:textAllCaps="true" android:paddingStart="12.0dip" android:paddingEnd="10.0dip" />
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@+id/body" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Body text" android:paddingStart="12.0dip" android:paddingEnd="10.0dip" />
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/btn_dontshow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Don't show again" style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <Button android:id="@+id/btn_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OK" style="@style/Widget.AppCompat.Button.Borderless.Colored" />
+    </LinearLayout>
+</LinearLayout>

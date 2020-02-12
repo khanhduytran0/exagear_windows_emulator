@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="#ffe0e0e0" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/title_bar_background" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/sef_application_logo" android:scaleType="fitCenter" />
+        <TextView android:textAppearance="?android:textAppearanceMedium" android:layout_gravity="center_vertical" android:id="@+id/rate_custom_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="15.0dip" />
+    </LinearLayout>
+    <TextView android:textAppearance="?android:textAppearanceLarge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="25.0dip" android:text="@string/rate_me" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="2.0">
+        <Button android:textAppearance="?android:textAppearanceMedium" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/rate_later" android:layout_weight="1.0" android:onClick="onRateLaterClicked" />
+        <Button android:textAppearance="?android:textAppearanceMedium" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="5.0dip" android:text="@string/rate_now" android:layout_weight="1.0" android:onClick="onRateNowClicked" />
+    </LinearLayout>
+</LinearLayout>

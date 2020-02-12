@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="list_advanced_options">
+        <item>Select X11 server</item>
+        <item>Try fix Exagear, fill in the missing files</item>
+		<item>(Coming soon)</item>
+    </string-array>
+    <string-array name="cont_pref_controls_entries">
+        <item>Default</item>
+        <item>RTS</item>
+        <item>Heroes of Might and Magic 3</item>
+        <item>Disciples 2</item>
+        <item>Panzer General 2</item>
+        <item>Civilization 3</item>
+        <item>Arcanum: Of Steamworks and Magick Obscura</item>
+        <item>Fallout</item>
+        <item>Jagged Alliance 2</item>
+        <item>Might and Magic</item>
+    </string-array>
+    <string-array name="cont_pref_controls_values">
+        <item>default</item>
+        <item>rts</item>
+        <item>heroes3</item>
+        <item>disciples2</item>
+        <item>panzer2</item>
+        <item>civilization3</item>
+        <item>arcanum</item>
+        <item>fallout</item>
+        <item>ja2</item>
+        <item>mm</item>
+    </string-array>
+    <string-array name="cont_pref_locale_entries">
+        <item>Default (English)</item>
+        <item>Czech</item>
+        <item>French</item>
+        <item>German</item>
+        <item>Hebrew</item>
+        <item>Italian</item>
+        <item>Polish</item>
+        <item>Portuguese</item>
+        <item>Russian</item>
+        <item>Spanish</item>
+    </string-array>
+    <string-array name="cont_pref_locale_values">
+        <item>en_US.utf8</item>
+        <item>cs_CZ.utf8</item>
+        <item>fr_FR.utf8</item>
+        <item>de_DE.utf8</item>
+        <item>he_IL.utf8</item>
+        <item>it_IT.utf8</item>
+        <item>pl_PL.utf8</item>
+        <item>pt_PT.utf8</item>
+        <item>ru_RU.utf8</item>
+        <item>es_ES.utf8</item>
+    </string-array>
+    <string-array name="cont_pref_screen_color_depth_entries">
+        <item>15bit</item>
+        <item>16bit</item>
+        <item>32bit</item>
+    </string-array>
+    <string-array name="cont_pref_screen_color_depth_values">
+        <item>15</item>
+        <item>16</item>
+        <item>32</item>
+    </string-array>
+    <string-array name="cont_pref_screen_size_entries">
+        <item>Default</item>
+        <item>640x480 (4:3)</item>
+        <item>800x600 (4:3)</item>
+        <item>1024x768 (4:3)</item>
+        <item>1280x720 (16:9)</item>
+        <item>1280x1024 (5:4)</item>
+        <item>1366x768 (16:9)</item>
+        <item>1600x900 (16:9)</item>
+        <item>1920x1080 (16:9)</item>
+    </string-array>
+    <string-array name="cont_pref_screen_size_values">
+        <item>default</item>
+        <item>640,480</item>
+        <item>800,600</item>
+        <item>1024,768</item>
+        <item>1280,720</item>
+        <item>1280,1024</item>
+        <item>1366,768</item>
+        <item>1600,900</item>
+        <item>1920,1080</item>
+    </string-array>
+</resources>

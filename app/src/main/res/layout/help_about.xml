@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<LinearLayout
+		android:orientation="vertical"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:paddingStart="12.0dip"
+			android:paddingEnd="16.0dip">
+
+			<TextView
+				android:textAppearance="@android:style/TextAppearance.Medium"
+				android:gravity="center_vertical"
+				android:layout_width="wrap_content"
+				android:layout_height="48.0dip"
+				android:text="Version"
+				android:layout_weight="1.0"/>
+
+			<TextView
+				android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+				android:gravity="center_vertical"
+				android:id="@+id/version"
+				android:layout_width="wrap_content"
+				android:layout_height="48.0dip"
+				android:text="1.0.0"/>
+
+		</LinearLayout>
+
+		<View
+			android:background="?android:dividerHorizontal"
+			android:layout_width="fill_parent"
+			android:layout_height="1.0dip"/>
+
+		<TextView
+			android:textAppearance="@style/TextAppearance.AppCompat.Small"
+			android:gravity="center_vertical"
+			android:autoLink="web"
+			android:paddingTop="8.0dip"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="https://eltechs.com"
+			android:paddingStart="12.0dip"/>
+
+		<TextView
+			android:textAppearance="@style/TextAppearance.AppCompat.Small"
+			android:gravity="center_vertical"
+			android:autoLink="web"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="[Insert your custom link here]"
+			android:paddingStart="12.0dip"/>
+
+		<TextView
+			android:textAppearance="@style/TextAppearance.AppCompat.Small"
+			android:gravity="center_vertical"
+			android:paddingTop="8.0dip"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="MOD: by AkiraYuki &amp; 4PDA developers."
+			android:paddingStart="12.0dip"/>
+
+		<TextView
+			android:textAppearance="@style/TextAppearance.AppCompat.Small"
+			android:gravity="center_vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Open Source: khanhduy032."
+			android:paddingStart="12.0dip"/>
+
+		<TextView
+			android:textAppearance="@style/TextAppearance.AppCompat.Small"
+			android:gravity="center_vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="Special thanks to developers of decompilers: Jadx, CFR, jd-core."
+			android:paddingStart="12.0dip"
+			android:textStyle="bold"/>
+
+		<TextView
+			android:textAppearance="@style/TextAppearance.AppCompat.Small"
+			android:gravity="center_vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:text="© 2013-2018 Eltechs, Inc. All rights reserved."
+			android:paddingStart="12.0dip"
+			android:paddingTop="8dp"/>
+
+	</LinearLayout>
+
+</ScrollView>
+

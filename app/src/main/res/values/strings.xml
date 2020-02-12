@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ac_error_prefix">"Activation error: "</string>
+    <string name="ac_more_than_one_candidate_of_lice_file">"there is more than one candidate of license file: "</string>
+    <string name="ac_no_license_file_found">no license file found neither in `%1$s`, nor in `%2$s`.</string>
+    <string name="ac_no_network_connection">no network connection available. Check connection and try again.</string>
+    <string name="ac_server_response_no_result_data">the server response contains no result data. Status = %1$s.</string>
+    <string name="ac_server_response_not_ok">bad server response: %1$d %2$s.</string>
+    
+	<string name="agw_basic_instruction">Add agw_basic_instruction string to your project.</string>
+    
+	<string name="aro_colour_depth">Colour depth</string>
+    <string name="aro_default_controls_name">Default controls</string>
+    <string name="aro_description">Run configuration</string>
+    <string name="aro_locale">Locale</string>
+    <string name="aro_reset_to_defaults">Reset to defaults</string>
+    <string name="aro_screen_resolution">Screen resolution</string>
+   
+	<string name="bottom_sheet_behavior">android.support.design.widget.BottomSheetBehavior</string>
+   
+	<string name="buy_promo_button_text">GET ACCESS NOW</string>
+    <string name="buy_promo_header_text">Buy a lifetime access to ExaGear Strategies</string>
+    <string name="buy_promo_no_price">Unable to get price information, check internet connection.</string>
+    
+	<string name="character_counter_pattern">%1$d / %2$d</string>
+   
+	<string name="cil_installed_to_sdcard">It seems that you have installed ExaGear to the SD card. Please try to move ExaGear to the internal memory.</string>
+   
+	<string name="civ3_shift_off">Shift OFF</string>
+    <string name="civ3_shift_on">Shift ON</string>
+    
+	<string name="cl_retry">Retry</string>
+    <string name="cl_retry_message">Unable to validate license. Check to see if a network connection is available.</string>
+    <string name="cl_unlicensed_message">This application is not licensed. Please purchase it from Google Play Store.</string>
+	
+	<string name="cont_popup_clone">Clone</string>
+	<string name="cont_popup_delete">Delete</string>
+	<string name="cont_popup_installpkg">Install packages</string>
+	<string name="cont_popup_properties">Properties</string>
+	<string name="cont_popup_runexplorer">Run Explorer</string>
+	<string name="cont_popup_runlinuxenv">Run Linux x86 Environment</string>
+	
+	<string name="cont_run_guide_civ3_body">"&lt;big>&lt;b>To run Civilization III you must do following:&lt;/b>&lt;/big> &lt;p>&lt;b>1.&lt;/b> Open \"Manage Containers\" menu.&lt;/p> &lt;p>&lt;b>2.&lt;/b> Run Explorer in container by clicking \"Run Explorer\" in container's context menu (container name can be found under shortcut name on \"Desktop\" or \"Start Menu\").&lt;/p> &lt;p>&lt;b>3.&lt;/b> Locate game installation folder. Go to \"Contest\" folder.&lt;/p> &lt;p>&lt;b>4.&lt;/b> Find \"Civ3Conquests.exe\", right click on it (long tap) and select \"Create link\".&lt;/p> &lt;p>&lt;b>5.&lt;/b> Now you can run Civilization III from Desktop menu by clicking \"Civ3Conquests\".&lt;/p>"</string>
+    <string name="cont_run_guide_civ3_header">Civilization III run guide</string>
+    <string name="cont_run_guide_divine_divinity_body">&lt;b>To run Divine Divinity you must do following:&lt;/b> &lt;p>&lt;b>1.&lt;/b> Locate Divine Divinity folder in Start Menu and run \"Settings\".&lt;/p> &lt;p>&lt;b>2.&lt;/b> Select \"Software\" under \"New rendering\".&lt;/p> &lt;p>&lt;b>3.&lt;/b> Select \"800 x 600\" under \"Preferred display\".&lt;/p> &lt;p>&lt;b>4.&lt;/b> Press \"Apply &amp; Close\" button.&lt;/p> &lt;p>&lt;b>5.&lt;/b> Now you can run Divine Divinity from \"Desktop\" menu.&lt;/p></string>
+    <string name="cont_run_guide_divine_divinity_header">Divine Divinity run guide</string>
+    <string name="cont_run_guide_fallout2_body">"&lt;b>To run Fallout 2 you must do following:&lt;/b> &lt;p>&lt;b>1.&lt;/b> Open \"Manage Containers\" menu.&lt;/p> &lt;p>&lt;b>2.&lt;/b> Run Explorer in container by clicking \"Run Explorer\" in container's context menu (container name can be found under shortcut name on \"Desktop\" or \"Start Menu\").&lt;/p> &lt;p>&lt;b>3.&lt;/b> Locate game installation folder.&lt;/p> &lt;p>&lt;b>4.&lt;/b> Find \"fallout2.exe\", right click on it (long tap) and select \"Create link\".&lt;/p> &lt;p>&lt;b>5.&lt;/b> Now you can run Fallout 2 from \"Desktop\" menu by clicking \"fallout2\".&lt;/p>"</string>
+    <string name="cont_run_guide_fallout2_header">Fallout 2 run guide</string>
+    <string name="cont_run_guide_fallout_body">"&lt;b>To run Fallout you must do following:&lt;/b> &lt;p>&lt;b>1.&lt;/b> Open \"Manage Containers\" menu.&lt;/p> &lt;p>&lt;b>2.&lt;/b> Run Explorer in container by clicking \"Run Explorer\" in container's context menu (container name can be found under shortcut name on \"Desktop\" or \"Start Menu\").&lt;/p> &lt;p>&lt;b>3.&lt;/b> Locate game installation folder.&lt;/p> &lt;p>&lt;b>4.&lt;/b> Find \"falloutw.exe\", right click on it (long tap) and select \"Create link\".&lt;/p> &lt;p>&lt;b>5.&lt;/b> Now you can run Fallout from \"Desktop\" menu by clicking \"falloutw\".&lt;/p>"</string>
+    <string name="cont_run_guide_fallout_header">Fallout run guide</string>
+	
+    <string name="copy_wine_prefix_failed">Copy operation failed. Is there enough free space?</string>
+    <string name="cpi_header_label">Choose the option to start playing</string>
+    <string name="cpi_lifetime_rules">&lt;html> &lt;head>&lt;meta http-equiv=content-type content=text/html; charset=UTF-8>&lt;/head> &lt;body> &lt;h3>Purchasing a lifetime access to ExaGear Strategies&lt;/h3> &lt;p> To play your favorite Windows games on Android, you need to pay for a full lifetime access to ExaGear Strategies. &lt;/p> &lt;p> What you are paying for:&lt;br> - License for using our unique technology, which aims to bring your favorite Windows PC games to your Android device.&lt;br> - Controls for PC games, optimized for playing on the touchscreens of Android devices. &lt;/p> &lt;/body> &lt;/html></string>
+    <string name="cpi_run_trial_button_label">FREE trial access (till %1$s)</string>
+    <string name="cpi_subs_info">&lt;html> &lt;head>&lt;meta http-equiv=content-type content=text/html; charset=UTF-8>&lt;/head> &lt;body> &lt;h3>Get charged monthly for the access to ExaGear Strategies&lt;/h3> &lt;p> 1. Buying the subscription, you get an instant and unlimited access to the game via ExaGear Strategies for the duration of 1 month. &lt;/p> &lt;p> 2. You are charged automatically starting from the second month of your subscription. &lt;/p> &lt;p> 3. You can view your subscription status and cancel it any time via your &lt;b>Google Play&lt;/b> app account. Just got to &lt;b>Menu → Subscriptions&lt;/b>, choose the subscription and cancel it with a single tap. &lt;/p> &lt;p> 4. Cancelling the subscription, you stop being automatically charged on the next month, when you current subscription period is expired. Still, the subscription stays valid until the end of the current period. &lt;/p> &lt;/body> &lt;/html></string>
+    <string name="cpi_trial_rules">"&lt;html> &lt;head>&lt;meta http-equiv=content-type content=text/html; charset=UTF-8>&lt;/head> &lt;body> &lt;h3>What is a FREE Trial access to ExaGear Strategies?&lt;/h3> &lt;p> It is a 3-day trial period during which you have a &lt;b>FREE&lt;/b> full access to ExaGear Strategies and play your favorite Windows PC games without any limits. &lt;/p> &lt;h3>The FREE Trial period terms:&lt;/h3> &lt;p> 1. The trial period is valid for &lt;b>3 days&lt;/b> since the moment of it's activation. &lt;/p> &lt;p> 2. When you re-install the app after the trial expiry date, the trial period won’t occur anymore on your device. &lt;/p> &lt;p> 3. Each time you launch the app, a 10-minutes free trial session is started. After the 10 minutes of playing you have to restart the session to keep on. &lt;/p> &lt;/body> &lt;/html>"</string>
+   
+	<string name="default_notification_channel_id">fcm_default_channel</string>
+    <string name="directory_is_occupied">Directory is occupied</string>
+    
+	<string name="ed_list_empty">[Empty]</string>
+    <string name="ed_main_menu_desktop">Desktop</string>
+    <string name="ed_main_menu_help">Help</string>
+    <string name="ed_main_menu_install_new">Install New</string>
+    <string name="ed_main_menu_select_container">Manage Containers</string>
+    <string name="ed_main_menu_settings">Settings</string>
+    <string name="ed_main_menu_start_menu">Start Menu</string>
+	<string name="ed_main_menu_advanced_options">Advanced Options</string>
+    <string name="expand_button_title">Advanced</string>
+
+	<string name="fail_to_configure">Failed to configure x86 image</string>
+    <string name="fail_to_unpack_zip">Failed to unpack zip archive</string>
+    <string name="fal_sync">Sync</string>
+    <string name="fallout2_failed_to_fixup_cfg">Failed to fixup fallout2.cfg</string>
+    <string name="fcm_fallback_notification_channel_label">Miscellaneous</string>
+    
+	<string name="help_overview">"&lt;b>&lt;big>Installing applications&lt;/big>&lt;/b>&lt;br> &lt;p> To install application you can use following methods: &lt;/p> &lt;p> &lt;b>1. Simple installation (using recipe).&lt;/b>&lt;br> &lt;p> This is a simple way to install application.&lt;br> You should select &lt;i>\"Install New\"&lt;/i> in main menu, then select application from the list (or &lt;i>\"Other app\"&lt;/i> if there is no your app in the list), and select installation executable file.&lt;br> Executable files should be placed to &lt;i>\"Download\"&lt;/i> folder (or it's subfolder) on your device's internal storage.&lt;br> &lt;b>Important!&lt;/b> When you install application using recipe, it is strongly recommended not to run application immediately after installation process finishes. Instead you should exit Windows environment and run application using shortcut on &lt;i>\"Desktop\"&lt;/i> or &lt;i>\"Start Menu\"&lt;/i>. &lt;/p> &lt;/p> &lt;p> &lt;b>2. Manual installation.&lt;/b>&lt;br> &lt;p> This is option for advanced users.&lt;br> If you have any problems with recipe install method, or if your case is non-trivial and requires some additional actions, you can try to install application manually.&lt;br> To do this you should perform following actions:&lt;br> * Enter &lt;i>\"Manage Containers\"&lt;/i> in main menu and create new container by clicking &lt;i>\"+\"&lt;/i> button (you can skip this step if you want to use existing container).&lt;br> * Open container's &lt;i>\"Properties\"&lt;/i> and change any necessary settings.&lt;br> * Optionally, you can install additional packages using container's &lt;i>\"Install packages\"&lt;/i>.&lt;br> * Select &lt;i>\"Run Explorer\"&lt;/i> in container's menu and you get into Windows environment with File Manager running.&lt;br> * Now you can perform any actions you want (running executables, copying files, creating shortcuts etc.).&lt;br> &lt;/p> &lt;/p> &lt;b>&lt;big>Containers&lt;/big>&lt;/b>&lt;br> &lt;p> &lt;b>1. Overview.&lt;/b>&lt;br> &lt;p> Container is an isolated Windows environment, similar to separate Windows installation. You can perform any actions with container without affecting other containers.&lt;br> New container creates automatically when you install application using recipe. You can also create new container manually by clicking &lt;i>\"+\"&lt;/i> button in &lt;i>\"Manage Containers\"&lt;/i> menu.&lt;br> &lt;/p> &lt;/p> &lt;p> &lt;b>2. Actions with containers.&lt;/b>&lt;br> &lt;p> &lt;i>Run Explorer.&lt;/i>&lt;br> Opens Windows environment with File Manager where you can perform any actions you want.&lt;br> &lt;/p> &lt;p> &lt;i>Install packages.&lt;/i>&lt;br> Some programs may require additional software to run correctly (for example, .NET). You can install this software by clicking &lt;i>\"Install packages\"&lt;/i> in container's menu. Packages installation performs in background and may take quite a lot of time to complete (up to 5 minutes for one package). If installation progress doesn't update for this period, an error occurred during installation and you should cancel it by clicking &lt;i>\"Back\"&lt;/i> button on your device.&lt;br> &lt;b>Important!&lt;/b> Packages are downloaded from the Internet so make sure that you have your Network connection active.&lt;br> &lt;/p> &lt;p> &lt;i>Clone and delete.&lt;/i>&lt;br> You can clone entire container with all applications, files and settings by clicking &lt;i>\"Clone\"&lt;/i> in container's menu. Cloning large container may take a while depending on it's size.&lt;br> You can delete container by clicking &lt;i>\"Delete\"&lt;/i> in container's menu.&lt;br> &lt;/p> &lt;/p> &lt;p> &lt;b>3. Container properties.&lt;/b>&lt;br> &lt;p> You can change various container's properties by clicking &lt;i>\"Properties\"&lt;/i> in container's menu.&lt;br> The most important properties are:&lt;br> &lt;p> &lt;i>Screen resolution&lt;/i> and &lt;i>Color depth&lt;/i>&lt;br> For games, to work correctly, must be set to those at which particular game runs. For common applications default resolution and 32bit color depth should be suitable.&lt;br> &lt;/p> &lt;p> &lt;i>Controls&lt;/i>&lt;br> For games use controls that best suite for particular game. For common applications default controls should be the best choice.&lt;br> &lt;/p> &lt;p> &lt;i>Locale&lt;/i>&lt;br> For old applications and games it must match application language, or you may have problems with displaying fonts and typing text.&lt;br> &lt;/p> &lt;/p> &lt;/p> &lt;b>&lt;big>Controls&lt;/big>&lt;/b>&lt;br> &lt;p> To imitate mouse and keyboard, touch gestures are used. There are different sets of this gestures, each of which optimized for particular type of applications or games. You can find detailed instructions for each controls in &lt;i>\"Controls\"&lt;/i> section of this Help.&lt;br> When installing application from recipe (typically a game), controls for corresponding container are automatically set to optimized for this game. You can change controls in container's properties at any time.&lt;br> &lt;/p>"</string>
+    <string name="hide_files">Hide unsupported executables</string>
+    <string name="hide_side_panels">Hide side panels</string>
+    <string name="host_app_name">ExaGear - Windows Emulator</string>
+   
+	<string name="like_textelem">%1$s</string>
+    
+	<string name="linux_option_title">Select Linux command to run</string>
+	<string name="linux_option_message">This feature is unofficial added, experimental and may not working properly. A different container doesn\'t save different Linux data.</string>
+	<string name="linux_option_runxterm">Run XTerm</string>
+	<string name="linux_option_runcustom">Run Custom</string>
+	<string name="linux_runcustom_title">Input Shell command</string>
+	
+	<string name="mm_run_off">Run OFF</string>
+    <string name="mm_run_on">Run ON</string>
+	<string name="more_files">Show unsupported executables...</string>
+    
+	<string name="no_obb_file_found">Failed to find exagear image. Try to reinstall application</string>
+   
+	<string name="password_toggle_content_description">Toggle password visibility</string>
+    
+	<string name="path_password_eye">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through">M3.27,4.27 L19.74,20.74</string>
+ 
+	<string name="pick_exe">Pick a file to run</string>
+   
+	<string name="rate_later">Later</string>
+    <string name="rate_me">Please, rate this application on Google Play</string>
+    <string name="rate_now">Rate</string>
+    
+	<string name="sa_activation">Activation…</string>
+    <string name="sa_ad_button_hide">Skip</string>
+    <string name="sa_checking_license">Validating license…</string>
+    <string name="sa_searching_for_exe_files">Searching for games on your device. Please wait…</string>
+    <string name="sa_title">Starting up…</string>
+    <string name="sa_unpacking_guest_image">Unpacking. Please wait…</string>
+   
+	<string name="scp_description">We haven’t discovered what type of controls would be the best suit for this game. It’s recommended to test all on your own.</string>
+    <string name="scp_header">Select controls</string>
+   
+	<string name="search_menu_title">Search</string>
+   
+	<string name="sef_description">Select a game to run:</string>
+    <string name="sef_promo_text">Full access! %d%% off!</string>
+    <string name="sef_show_configuration_menu">…</string>
+    
+	<string name="short_app_name">ExaGear</string>
+    
+	<string name="show_keyboard">Keyboard</string>
+    <string name="show_normal">Standard screen</string>
+    <string name="show_side_panels">Show side panels</string>
+    <string name="show_stretched">Fullscreen</string>
+    <string name="show_tutorial">About controls</string>
+    <string name="stop_Xserver">Quit</string>
+   
+	<string name="summary_collapsed_preference_list">%1$s, %2$s</string>
+    <string name="uadwp_external_sdcard_not_writable">"The directory '%s' is not writable and ExaGear will not search it for your applications."</string>
+    
+	<string name="warn_title">Warning</string>
+   
+	<string name="wd_menu_action_copy_to_desktop">Copy shortcut to Desktop</string>
+    <string name="wd_menu_action_delete">Delete shortcut</string>
+    <string name="wd_menu_action_uninstall">Uninstall</string>
+    <string name="wd_no_exe_files">[No executables]</string>
+    <string name="wd_title_container_prop">Container properties</string>
+    <string name="wd_title_desktop">Desktop</string>
+    <string name="wd_title_manage_containers">Containers manager</string>
+    <string name="wd_title_select_install_recipe">Select app to install</string>
+    <string name="wd_title_select_installer_file">Select installer file</string>
+    <string name="wd_title_start_menu">Start Menu</string>
+    <string name="wd_title_advanced_options">Advanced Options</string>
+    
+	<string name="xda_guest_suddenly_died">&lt;html>&lt;body> &lt;p>It seems that while ExaGear was off-screen, Android decided to free some resources. Unfortunately, it has killed ExaGear. &lt;p>Please try to free some memory by stopping resource-hungry programs like animated wallpapers. Rebooting your device may also help. &lt;/body>&lt;/html></string>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.RecyclerView android:id="@+id/list" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layoutManager="LinearLayoutManager"
+      xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+    <TextView android:textSize="32.0sp" android:textColor="@color/secondary_text" android:gravity="center" android:id="@+id/empty_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ed_list_empty" />
+</FrameLayout>

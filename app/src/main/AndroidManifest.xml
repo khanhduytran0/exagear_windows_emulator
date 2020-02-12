@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.eltechs.ed">
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+<!--
+    <uses-permission android:name="com.android.vending.CHECK_LICENSE"/>
+-->
+    <uses-feature android:glEsVersion="0x00020000" android:required="true"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+    <permission android:name="com.eltechs.ed.permission.C2D_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.eltechs.ed.permission.C2D_MESSAGE"/>
+    <application android:icon="@drawable/logo" android:label="@string/host_app_name" android:logo="@drawable/logo">
+        <activity android:name="com.eltechs.ed.activities.EDStartupActivity" android:theme="@style/ThemeDefaultDialogNoTitle">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.eltechs.ed.activities.EDMainActivity" android:parentActivityName="com.eltechs.ed.activities.EDStartupActivity" android:theme="@style/ThemeDefault"/>
+        <activity android:name="com.eltechs.ed.activities.EDHelpActivity" android:parentActivityName="com.eltechs.ed.activities.EDMainActivity" android:theme="@style/ThemeDefault"/>
+        <activity android:name="com.eltechs.axs.activities.XServerDisplayActivity" android:screenOrientation="sensorLandscape" android:theme="@style/ThemeDefaultFullscreen"/>
+        <activity android:name="com.eltechs.axs.activities.FatalErrorActivity" android:theme="@style/ThemeDefaultDialogNoTitle"/>
+        <activity android:name="com.eltechs.axs.activities.SwitchToAxsFromSystemTrayActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </activity>
+        <service android:name="com.eltechs.axs.environmentService.AXSEnvironmentService">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+            </intent-filter>
+        </service>
+    </application>
+</manifest>

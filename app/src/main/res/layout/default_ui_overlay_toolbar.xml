@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout 	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="horizontal"
+	android:id="@+id/default_ui_overlay_toolbar"
+	android:background="#bbffffff"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:maxHeight="50.0dip"
+	xmlns:app="http://schemas.android.com/apk/res-auto">
+
+	<ImageButton
+		android:id="@+id/button_fullscreen"
+		android:padding="2.0dip"
+		android:focusable="true"
+		android:clickable="true"
+		android:layout_width="0.0dip"
+		android:layout_height="0.0dip"
+		android:scaleType="fitCenter"
+		android:tint="@color/primary_dark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ic_fullscreen_24dp"/>
+	<!-- app:layout_constraintEnd_toStartOf="@id/button_sidetoolbars" -->
+
+	<ImageButton
+		android:id="@+id/button_sidetoolbars"
+		android:padding="2.0dip"
+		android:focusable="true"
+		android:visibility="gone"
+		android:clickable="true"
+		android:layout_width="0.0dip"
+		android:layout_height="0.0dip"
+		android:scaleType="fitCenter"
+		android:tint="@color/primary_dark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@id/button_fullscreen"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ic_view_array_24dp"/>
+	<!-- app:layout_constraintEnd_toStartOf="@id/button_kbd" -->
+
+	<ImageButton
+		android:id="@+id/button_kbd"
+		android:padding="2.0dip"
+		android:focusable="true"
+		android:clickable="true"
+		android:layout_width="0.0dip"
+		android:layout_height="0.0dip"
+		android:scaleType="fitCenter"
+		android:tint="@color/primary_dark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@id/button_sidetoolbars"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ic_keyboard_24dp"/>
+	<!-- 	app:layout_constraintEnd_toStartOf="@id/button_help" -->
+		
+	<ImageButton
+		android:id="@+id/button_help"
+		android:padding="2.0dip"
+		android:focusable="true"
+		android:clickable="true"
+		android:layout_width="0.0dip"
+		android:layout_height="0.0dip"
+		android:scaleType="fitCenter"
+		android:tint="@color/primary_dark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@id/button_kbd"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ic_help_24dp"/>
+	<!-- app:layout_constraintEnd_toStartOf="@id/button_close" -->
+
+	<ImageButton
+		android:id="@+id/button_close"
+		android:padding="2.0dip"
+		android:focusable="true"
+		android:clickable="true"
+		android:layout_width="0.0dip"
+		android:layout_height="0.0dip"
+		android:scaleType="fitCenter"
+		android:tint="@color/primary_dark"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintDimensionRatio="1:1"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintHorizontal_bias="0.5"
+		app:layout_constraintStart_toEndOf="@id/button_help"
+		app:layout_constraintTop_toTopOf="parent"
+		app:srcCompat="@drawable/ic_close_24dp"/>
+
+</android.support.constraint.ConstraintLayout>

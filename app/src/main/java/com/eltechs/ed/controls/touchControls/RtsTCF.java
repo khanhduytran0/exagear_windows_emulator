@@ -1,0 +1,143 @@
+package com.eltechs.ed.controls.touchControls;
+
+import android.util.DisplayMetrics;
+import com.eltechs.axs.GestureStateMachine.GestureContext;
+import com.eltechs.axs.GestureStateMachine.GestureState1FingerMeasureSpeed;
+import com.eltechs.axs.GestureStateMachine.GestureState1FingerMoveToMouseDragAndDrop;
+import com.eltechs.axs.GestureStateMachine.GestureState1FingerMoveToMouseMoveWithClick;
+import com.eltechs.axs.GestureStateMachine.GestureState1FingerMoveToScrollAsync;
+import com.eltechs.axs.GestureStateMachine.GestureState1FingerToZoomMove;
+import com.eltechs.axs.GestureStateMachine.GestureState2FingersToZoom;
+import com.eltechs.axs.GestureStateMachine.GestureStateClickToFingerFirstCoords;
+import com.eltechs.axs.GestureStateMachine.GestureStateNeutral;
+import com.eltechs.axs.GestureStateMachine.GestureStateWaitFingersNumberChangeWithTimeout;
+import com.eltechs.axs.GestureStateMachine.GestureStateWaitForNeutral;
+import com.eltechs.axs.GestureStateMachine.PointerContext;
+import com.eltechs.axs.GuestAppActionAdapters.AlignedMouseClickAdapter;
+import com.eltechs.axs.GuestAppActionAdapters.AsyncScrollAdapterWithPointer;
+import com.eltechs.axs.GuestAppActionAdapters.MouseClickAdapterWithCheckPlacementContext;
+import com.eltechs.axs.GuestAppActionAdapters.OffsetMouseMoveAdapter;
+import com.eltechs.axs.GuestAppActionAdapters.PressAndHoldMouseClickAdapter;
+import com.eltechs.axs.GuestAppActionAdapters.PressAndReleaseMouseClickAdapter;
+import com.eltechs.axs.GuestAppActionAdapters.SimpleDragAndDropAdapter;
+import com.eltechs.axs.GuestAppActionAdapters.SimpleMouseMoveAdapter;
+import com.eltechs.axs.GuestAppActionAdapters.SimpleMousePointAndClickAdapter;
+import com.eltechs.axs.TouchArea;
+import com.eltechs.axs.TouchEventMultiplexor;
+import com.eltechs.axs.finiteStateMachine.FiniteStateMachine;
+import com.eltechs.axs.finiteStateMachine.generalStates.FSMStateRunRunnable;
+import com.eltechs.axs.geom.Rectangle;
+import com.eltechs.axs.helpers.AndroidHelpers;
+import com.eltechs.axs.widgets.viewOfXServer.ViewOfXServer;
+import com.eltechs.ed.controls.uiOverlays.DefaultUIOverlay;
+
+public class RtsTCF extends AbstractTCF {
+    private static final float clickAlignThresholdInches = 0.15f;
+    private static final float doubleClickMaxDistanceInches = 0.15f;
+    private static final int doubleClickMaxIntervalMs = 200;
+    private static final float fingerAimingMaxMoveDiagCoeff = 0.03f;
+    private static final float fingerStandingMaxMoveInches = 0.07f;
+    private static final int fingerToLongTimeMs = 100;
+    private static final int fingerToVeryLongTimeMs = 300;
+    private static final int maxExtraTapTimeMs = 400;
+    private static final int mouseActionSleepMs = 30;
+
+    public GestureContext createGestureContext(ViewOfXServer viewOfXServer, TouchArea touchArea, TouchEventMultiplexor touchEventMultiplexor, int i) {
+        ViewOfXServer viewOfXServer2 = viewOfXServer;
+        GestureContext gestureContext = new GestureContext(viewOfXServer2, touchArea, touchEventMultiplexor);
+        PointerContext pointerContext = new PointerContext();
+        GestureStateNeutral gestureStateNeutral = new GestureStateNeutral(gestureContext);
+        GestureStateWaitForNeutral gestureStateWaitForNeutral = new GestureStateWaitForNeutral(gestureContext);
+        DisplayMetrics displayMetrics = AndroidHelpers.getDisplayMetrics();
+        float f = (float) i;
+        float f2 = fingerStandingMaxMoveInches * f;
+        GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed = new GestureState1FingerMeasureSpeed(gestureContext, 100, f2, ((float) ((int) Math.sqrt(Math.pow((double) displayMetrics.widthPixels, 2.0d) + Math.pow((double) displayMetrics.heightPixels, 2.0d)))) * fingerAimingMaxMoveDiagCoeff, f2, 0.0f);
+        GestureStateClickToFingerFirstCoords gestureStateClickToFingerFirstCoords = new GestureStateClickToFingerFirstCoords(gestureContext, new SimpleMousePointAndClickAdapter(new SimpleMouseMoveAdapter(gestureContext.getPointerReporter()), new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 3, 30), pointerContext));
+        GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed2 = gestureState1FingerMeasureSpeed;
+        SimpleMousePointAndClickAdapter simpleMousePointAndClickAdapter = new SimpleMousePointAndClickAdapter(new SimpleMouseMoveAdapter(gestureContext.getPointerReporter()), new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 1, 30), pointerContext);
+        SimpleMouseMoveAdapter simpleMouseMoveAdapter = new SimpleMouseMoveAdapter(gestureContext.getPointerReporter());
+        PressAndReleaseMouseClickAdapter pressAndReleaseMouseClickAdapter = new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 1, 30);
+        SimpleMousePointAndClickAdapter simpleMousePointAndClickAdapter2 = simpleMousePointAndClickAdapter;
+        PointerContext pointerContext2 = pointerContext;
+        GestureStateClickToFingerFirstCoords gestureStateClickToFingerFirstCoords2 = gestureStateClickToFingerFirstCoords;
+        float f3 = 0.15f * f;
+        AlignedMouseClickAdapter alignedMouseClickAdapter = new AlignedMouseClickAdapter(simpleMouseMoveAdapter, pressAndReleaseMouseClickAdapter, new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 1, 30), viewOfXServer2, pointerContext2, f3);
+        AlignedMouseClickAdapter alignedMouseClickAdapter2 = new AlignedMouseClickAdapter(new SimpleMouseMoveAdapter(gestureContext.getPointerReporter()), new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 1, 30), new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 1, 30), viewOfXServer2, pointerContext2, f3);
+        MouseClickAdapterWithCheckPlacementContext mouseClickAdapterWithCheckPlacementContext = new MouseClickAdapterWithCheckPlacementContext(simpleMousePointAndClickAdapter2, alignedMouseClickAdapter, alignedMouseClickAdapter2, pointerContext, 200);
+        GestureStateClickToFingerFirstCoords gestureStateClickToFingerFirstCoords3 = new GestureStateClickToFingerFirstCoords(gestureContext, mouseClickAdapterWithCheckPlacementContext);
+        GestureState1FingerMoveToMouseMoveWithClick gestureState1FingerMoveToMouseMoveWithClick = new GestureState1FingerMoveToMouseMoveWithClick(gestureContext, pointerContext, new OffsetMouseMoveAdapter(new SimpleMouseMoveAdapter(gestureContext.getPointerReporter()), 0.0f * f, -0.2f * f), new PressAndReleaseMouseClickAdapter(gestureContext.getPointerReporter(), 1, 30));
+        AsyncScrollAdapterWithPointer asyncScrollAdapterWithPointer = new AsyncScrollAdapterWithPointer(gestureContext.getViewFacade(), new Rectangle(0, 0, gestureContext.getViewFacade().getScreenInfo().widthInPixels, gestureContext.getViewFacade().getScreenInfo().heightInPixels));
+        GestureContext gestureContext2 = gestureContext;
+        GestureStateClickToFingerFirstCoords gestureStateClickToFingerFirstCoords4 = gestureStateClickToFingerFirstCoords3;
+        // GestureState1FingerMoveToScrollAsync gestureState1FingerMoveToScrollAsync = r1;
+        GestureState1FingerMoveToMouseMoveWithClick gestureState1FingerMoveToMouseMoveWithClick2 = gestureState1FingerMoveToMouseMoveWithClick;
+        GestureState1FingerMoveToScrollAsync gestureState1FingerMoveToScrollAsync = new GestureState1FingerMoveToScrollAsync(gestureContext2, asyncScrollAdapterWithPointer, 1000000.0f, 1000000.0f, f * 0.1f, true, 15, true);
+        GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed3 = new GestureState1FingerMeasureSpeed(gestureContext2, fingerToVeryLongTimeMs, f2, f2, f2, 0.0f);
+        GestureState1FingerMoveToMouseDragAndDrop gestureState1FingerMoveToMouseDragAndDrop = new GestureState1FingerMoveToMouseDragAndDrop(gestureContext, new SimpleDragAndDropAdapter(new SimpleMouseMoveAdapter(gestureContext.getPointerReporter()), new PressAndHoldMouseClickAdapter(gestureContext.getPointerReporter(), 1), null), pointerContext, false, 0.0f);
+        SimpleDragAndDropAdapter simpleDragAndDropAdapter = new SimpleDragAndDropAdapter(new SimpleMouseMoveAdapter(gestureContext.getPointerReporter()), new PressAndHoldMouseClickAdapter(gestureContext.getPointerReporter(), 3), null);
+        GestureContext gestureContext3 = gestureContext;
+        // GestureState1FingerMoveToMouseDragAndDrop gestureState1FingerMoveToMouseDragAndDrop2 = r1;
+        GestureState1FingerMoveToMouseDragAndDrop gestureState1FingerMoveToMouseDragAndDrop2 = new GestureState1FingerMoveToMouseDragAndDrop(gestureContext3, simpleDragAndDropAdapter, pointerContext, false, 0.0f);
+        // GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed4 = r1;
+        float f4 = f2;
+        float f5 = f2;
+        GestureStateWaitFingersNumberChangeWithTimeout gestureStateWaitFingersNumberChangeWithTimeout = new GestureStateWaitFingersNumberChangeWithTimeout(gestureContext, maxExtraTapTimeMs);
+        float f6 = f2;
+        GestureState1FingerMoveToMouseDragAndDrop gestureState1FingerMoveToMouseDragAndDrop4 = gestureState1FingerMoveToMouseDragAndDrop2;
+        GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed4 = new GestureState1FingerMeasureSpeed(gestureContext3, 1000000, f4, f5, f6, 1000000.0f);
+        FSMStateRunRunnable fSMStateRunRunnable = new FSMStateRunRunnable(new Runnable() {
+            public void run() {
+                AndroidHelpers.toggleSoftInput();
+            }
+        });
+        GestureState2FingersToZoom gestureState2FingersToZoom = new GestureState2FingersToZoom(gestureContext);
+        GestureState1FingerToZoomMove gestureState1FingerToZoomMove = new GestureState1FingerToZoomMove(gestureContext);
+        GestureStateWaitFingersNumberChangeWithTimeout gestureStateWaitFingersNumberChangeWithTimeout2 = new GestureStateWaitFingersNumberChangeWithTimeout(gestureContext, maxExtraTapTimeMs);
+        FSMStateRunRunnable fSMStateRunRunnable2 = new FSMStateRunRunnable(new Runnable() {
+            public void run() {
+                ((DefaultUIOverlay) RtsTCF.this.mUIOverlay).toggleToolbar();
+            }
+        });
+        FiniteStateMachine finiteStateMachine = new FiniteStateMachine();
+        GestureStateClickToFingerFirstCoords gestureStateClickToFingerFirstCoords5 = gestureStateClickToFingerFirstCoords4;
+        GestureStateClickToFingerFirstCoords gestureStateClickToFingerFirstCoords6 = gestureStateClickToFingerFirstCoords2;
+        GestureContext gestureContext4 = gestureContext;
+        GestureStateWaitFingersNumberChangeWithTimeout gestureStateWaitFingersNumberChangeWithTimeout3 = gestureStateWaitFingersNumberChangeWithTimeout;
+        GestureState1FingerMoveToMouseDragAndDrop gestureState1FingerMoveToMouseDragAndDrop5 = gestureState1FingerMoveToMouseDragAndDrop;
+        GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed6 = gestureState1FingerMeasureSpeed4;
+        finiteStateMachine.setStatesList(gestureStateWaitForNeutral, gestureStateNeutral, gestureState1FingerMeasureSpeed2, gestureStateClickToFingerFirstCoords5, gestureState1FingerMoveToMouseMoveWithClick2, gestureState1FingerMoveToScrollAsync, gestureState1FingerMeasureSpeed3, gestureStateClickToFingerFirstCoords6, gestureState1FingerMoveToMouseDragAndDrop4, gestureState1FingerMoveToMouseDragAndDrop, gestureStateWaitFingersNumberChangeWithTimeout3, gestureState1FingerMeasureSpeed6, fSMStateRunRunnable, gestureState2FingersToZoom, gestureState1FingerToZoomMove, gestureStateWaitFingersNumberChangeWithTimeout2, fSMStateRunRunnable2);
+        finiteStateMachine.addTransition(gestureStateWaitForNeutral, GestureStateWaitForNeutral.GESTURE_COMPLETED, gestureStateNeutral);
+        GestureStateWaitForNeutral gestureStateWaitForNeutral2 = gestureStateWaitForNeutral;
+        GestureState1FingerMeasureSpeed gestureState1FingerMeasureSpeed7 = gestureState1FingerMeasureSpeed2;
+        finiteStateMachine.addTransition(gestureStateNeutral, GestureStateNeutral.FINGER_TOUCHED, gestureState1FingerMeasureSpeed7);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed7, GestureState1FingerMeasureSpeed.FINGER_TAPPED, gestureStateClickToFingerFirstCoords5);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed7, GestureState1FingerMeasureSpeed.FINGER_WALKED_AND_GONE, gestureStateClickToFingerFirstCoords5);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed7, GestureState1FingerMeasureSpeed.FINGER_WALKED, gestureState1FingerMoveToMouseMoveWithClick2);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed7, GestureState1FingerMeasureSpeed.FINGER_FLASHED, gestureState1FingerMoveToScrollAsync);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed7, GestureState1FingerMeasureSpeed.FINGER_STANDING, gestureState1FingerMeasureSpeed3);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed7, GestureState1FingerMeasureSpeed.FINGER_TOUCHED, gestureStateWaitFingersNumberChangeWithTimeout3);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed3, GestureState1FingerMeasureSpeed.FINGER_TAPPED, gestureStateClickToFingerFirstCoords6);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed3, GestureState1FingerMeasureSpeed.FINGER_WALKED_AND_GONE, gestureStateClickToFingerFirstCoords6);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed3, GestureState1FingerMeasureSpeed.FINGER_WALKED, gestureState1FingerMoveToMouseMoveWithClick2);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed3, GestureState1FingerMeasureSpeed.FINGER_FLASHED, gestureState1FingerMoveToMouseMoveWithClick2);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed3, GestureState1FingerMeasureSpeed.FINGER_STANDING, gestureState1FingerMoveToMouseDragAndDrop4);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed3, GestureState1FingerMeasureSpeed.FINGER_TOUCHED, gestureStateWaitFingersNumberChangeWithTimeout3);
+        finiteStateMachine.addTransition(gestureStateWaitFingersNumberChangeWithTimeout3, GestureStateWaitFingersNumberChangeWithTimeout.TIMED_OUT, gestureState2FingersToZoom);
+        finiteStateMachine.addTransition(gestureStateWaitFingersNumberChangeWithTimeout3, GestureStateWaitFingersNumberChangeWithTimeout.FINGER_TOUCHED, gestureStateWaitFingersNumberChangeWithTimeout2);
+        finiteStateMachine.addTransition(gestureStateWaitFingersNumberChangeWithTimeout3, GestureStateWaitFingersNumberChangeWithTimeout.FINGER_RELEASED, gestureState1FingerMeasureSpeed6);
+        finiteStateMachine.addTransition(gestureState2FingersToZoom, GestureState2FingersToZoom.FINGER_RELEASED, gestureState1FingerToZoomMove);
+        finiteStateMachine.addTransition(gestureState1FingerToZoomMove, GestureState1FingerToZoomMove.FINGER_TOUCHED, gestureState2FingersToZoom);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed6, GestureState1FingerMeasureSpeed.FINGER_TAPPED, fSMStateRunRunnable);
+        GestureState1FingerMoveToMouseDragAndDrop gestureState1FingerMoveToMouseDragAndDrop6 = gestureState1FingerMoveToMouseDragAndDrop5;
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed6, GestureState1FingerMeasureSpeed.FINGER_WALKED, gestureState1FingerMoveToMouseDragAndDrop6);
+        finiteStateMachine.addTransition(gestureState1FingerMeasureSpeed6, GestureState1FingerMeasureSpeed.FINGER_FLASHED, gestureState1FingerMoveToMouseDragAndDrop6);
+        finiteStateMachine.addTransition(gestureStateWaitFingersNumberChangeWithTimeout2, GestureStateWaitFingersNumberChangeWithTimeout.FINGER_RELEASED, fSMStateRunRunnable2);
+        finiteStateMachine.addTransition(gestureStateWaitFingersNumberChangeWithTimeout2, GestureStateWaitFingersNumberChangeWithTimeout.TIMED_OUT, fSMStateRunRunnable2);
+        finiteStateMachine.setInitialState(gestureStateNeutral);
+        finiteStateMachine.setDefaultState(gestureStateWaitForNeutral2);
+        finiteStateMachine.configurationCompleted();
+        GestureContext gestureContext5 = gestureContext4;
+        gestureContext5.setMachine(finiteStateMachine);
+        return gestureContext5;
+    }
+}

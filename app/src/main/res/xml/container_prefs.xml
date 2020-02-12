@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditTextPreference android:title="Name" android:key="NAME" android:defaultValue="[No name]" android:dialogTitle="Name" />
+    <ListPreference android:entries="@array/cont_pref_screen_size_entries" android:title="Screen resolution" android:key="SCREEN_SIZE" android:summary="%s" android:defaultValue="default" android:dialogTitle="Screen resolution" android:entryValues="@array/cont_pref_screen_size_values" />
+    <ListPreference android:entries="@array/cont_pref_screen_color_depth_entries" android:title="Color depth" android:key="SCREEN_COLOR_DEPTH" android:summary="%s" android:defaultValue="16" android:dialogTitle="Color depth" android:entryValues="@array/cont_pref_screen_color_depth_values" />
+    <ListPreference android:entries="@array/cont_pref_controls_entries" android:title="Controls" android:key="CONTROLS" android:summary="%s" android:defaultValue="default" android:dialogTitle="Controls" android:entryValues="@array/cont_pref_controls_values" />
+    <ListPreference android:entries="@array/cont_pref_locale_entries" android:title="Locale" android:key="LOCALE_NAME" android:summary="%s" android:defaultValue="en_US.utf8" android:dialogTitle="Locale" android:entryValues="@array/cont_pref_locale_values" />
+    <CheckBoxPreference android:title="Hide taskbar when launched from shortcut" android:key="HIDE_TASKBAR_SHORTCUT" android:defaultValue="false" />
+    <CheckBoxPreference android:title="Default controls when launched not from shortcut" android:key="DEFAULT_CONTROLS_NOT_SHORTCUT" android:defaultValue="true" />
+    <CheckBoxPreference android:title="Default resolution when launched not from shortcut" android:key="DEFAULT_RESOLUTION_NOT_SHORTCUT" android:defaultValue="true" />
+</PreferenceScreen>

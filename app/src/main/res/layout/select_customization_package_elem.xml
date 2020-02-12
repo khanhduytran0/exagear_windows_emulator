@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@+id/cpi_buy_subscription_view" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="5.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <Button android:gravity="center|left" android:id="@+id/select_cp_button_elem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawableLeft="@drawable/select_other_controls" android:drawablePadding="10.0dip" android:layout_weight="1.0" style="?android:borderlessButtonStyle" />
+    <Button android:id="@+id/select_cp_button_info" android:tag="buy_subscription" android:layout_width="45.0dip" android:layout_height="fill_parent" android:drawableRight="@drawable/cpi_info" style="?android:borderlessButtonStyle" />
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:stretchColumns="1"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TableRow>
+        <TextView android:textSize="28.0dip" android:id="@+id/textView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_column="0" android:layout_span="3" android:text="@string/rate_me" android:singleLine="false" />
+    </TableRow>
+    <TableRow>
+        <Button android:textSize="16.0dip" android:id="@+id/remind_me_later" android:layout_width="120.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_column="0" android:text="@string/rate_later" android:onClick="onRateLaterClicked" />
+        <Button android:textSize="16.0dip" android:id="@+id/rate_now" android:layout_width="120.0dip" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_column="2" android:text="@string/rate_now" android:singleLine="true" android:onClick="onRateNowClicked" />
+    </TableRow>
+</TableLayout>
