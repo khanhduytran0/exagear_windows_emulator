@@ -1,5 +1,6 @@
 package com.eltechs.axs.proto.input.impl;
 
+import com.eltechs.axs.activities.FatalErrorActivity;
 import com.eltechs.axs.helpers.ArithHelpers;
 import com.eltechs.axs.helpers.Assert;
 import com.eltechs.axs.proto.input.ExtensionRequestHandler;
@@ -83,6 +84,7 @@ public class RootXRequestHandler implements RequestHandler<XClient> {
 			}
 		} catch (Throwable th) {
 			th.printStackTrace();
+			FatalErrorActivity.showFatalError(th.getMessage());
 			// throw new RuntimeException(th);
 		}
     }
