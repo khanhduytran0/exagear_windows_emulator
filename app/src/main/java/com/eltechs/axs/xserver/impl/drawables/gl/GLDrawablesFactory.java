@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class GLDrawablesFactory extends DrawablesFactoryImplBase {
-    private static final ReferenceQueue<Reference<Drawable>> finalisedDrawablesReferenceQueue = new ReferenceQueue();
+    private static final ReferenceQueue<Reference<Drawable>> finalisedDrawablesReferenceQueue = new ReferenceQueue<Reference<Drawable>>();
     private static final GLDrawablesFinaliserThread drawablesFinalisationThread = new GLDrawablesFinaliserThread(finalisedDrawablesReferenceQueue);
 
     static {
@@ -75,7 +75,7 @@ public class GLDrawablesFactory extends DrawablesFactoryImplBase {
     }
 
     public Drawable create(int i, Window window, int i2, int i3, Visual visual) {
-        Drawable persistentGLDrawable = new PersistentGLDrawable(i, window, i2, i3, visual);
+        PersistentGLDrawable persistentGLDrawable = new PersistentGLDrawable(i, window, i2, i3, visual);
         drawablesFinalisationThread.registerFinalisationHandler(persistentGLDrawable, new PersistentGLDrawableDestroyer(persistentGLDrawable));
         return persistentGLDrawable;
     }
