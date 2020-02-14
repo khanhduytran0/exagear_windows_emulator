@@ -12,74 +12,7 @@ import com.eltechs.axs.helpers.Assert;
 import com.eltechs.axs.widgets.viewOfXServer.TransformationDescription;
 
 public class TransformationHelpers {
-	/*
-    public static TransformationDescription makeTransformationDescription(float f, float f2, float f3, float f4, float f5, float f6, XServerViewConfiguration.FitStyleHorizontal fitStyleHorizontal, XServerViewConfiguration.FitStyleVertical fitStyleVertical) {
-        float f7 = f / f5;
-        float f8 = f2 / f6;
-        float f9 = Math.min(f7, f8);
-        switch (fitStyleHorizontal) {
-            default: {
-                break;
-            }
-            case LEFT: 
-            case CENTER: 
-            case RIGHT: {
-                f7 = f9;
-            }
-        }
-        switch (fitStyleVertical) {
-            default: {
-                f9 = f8;
-            }
-            case TOP: 
-            case CENTER: 
-            case BOTTOM: 
-        }
-        f5 = f - f5 * f7;
-        f6 = f2 - f6 * f9;
-		// MOD: ??? Decompiled code:
-        // int n = 1.$SwitchMap$com$eltechs$axs$configuration$XServerViewConfiguration$FitStyleHorizontal[fitStyleHorizontal.ordinal()];
-		
-		// MOD: Replaced by code below, but may not correctly.
-        int n = fitStyleHorizontal.ordinal();
-		f8 = 0.0f;
-        f = f5;
-        switch (n) {
-            default: {
-                Assert.unreachable();
-            }
-            case 1: 
-            case 4: {
-                f2 = 0.0f;
-                break;
-            }
-            case 2: {
-                f = f5 / 2.0f;
-            }
-            case 3: {
-                f2 = f;
-            }
-        }
-        f = f6;
-        f5 = f8;
-        switch (fitStyleVertical) {
-            default: {
-                Assert.unreachable();
-                f5 = f8;
-                break;
-            }
-            case CENTER: {
-                f = f6 / 2.0f;
-            }
-            case BOTTOM: {
-                f5 = f;
-            }
-            case TOP: 
-            case STRETCH: 
-        }
-        return new TransformationDescription(f7, f9, -f3, -f4, f2, f5);
-    }
-*/
+
     public static TransformationDescription makeTransformationDescription(float totalWidth, float totalHeight, float subTopX, float subTopY, float subWidth, float subHeight, XServerViewConfiguration.FitStyleHorizontal fsh, XServerViewConfiguration.FitStyleVertical fsv) {
         float scaleX = totalWidth / subWidth;
         float scaleY = totalHeight / subHeight;

@@ -8,10 +8,6 @@ import com.eltechs.axs.proto.input.annotations.impl.ParameterDescriptor;
 import com.eltechs.axs.proto.input.parameterReaders.ParameterReader;
 import com.eltechs.axs.xserver.LocksManager.Subsystem;
 import java.lang.reflect.Method;
-import com.eltechs.axs.proto.input.parameterReaders.impl.*;
-import java.lang.annotation.*;
-import com.eltechs.axs.proto.input.impl.*;
-import com.eltechs.axs.xserver.events.*;
 
 public class AnnotationDrivenRequestDispatcherConfigurer {
     private final RequestContextParamReadersFactory reqCtxParamReadersFactory;
@@ -51,11 +47,11 @@ public class AnnotationDrivenRequestDispatcherConfigurer {
     }
 
     private ParameterReader configureParameterReader(final Method method, final ParameterDescriptor[] parameterDescriptorArr, int i) {
-        ParameterReader parameterReader = null;
+        ParameterReader parameterReader;
         ParameterDescriptor parameterDescriptor = parameterDescriptorArr[i];
         ConfigurationContext configurationContext = new ConfigurationContext() {
             public String getHandlerMethodName() {
-                return String.format("%s::%s()", new Object[]{method.getDeclaringClass().getSimpleName(), method.getName()});
+                return String.format("%s::%s()", method.getDeclaringClass().getSimpleName(), method.getName());
             }
 
             public int getParametersCount() {
@@ -70,34 +66,22 @@ public class AnnotationDrivenRequestDispatcherConfigurer {
                 return AnnotationDrivenRequestDispatcherConfigurer.this.findNamedParameter(parameterDescriptorArr, str);
             }
         };
-	/*
+
         if (parameterDescriptor.getAnnotation(RequestParam.class) == null) {
             parameterReader = this.reqCtxParamReadersFactory.createReader(parameterDescriptor, configurationContext);
         } else {
             parameterReader = this.reqParamReadersFactory.createReader(parameterDescriptor, configurationContext);
         }
-	*/
-	
-		try {
-			if (parameterReader == null) {
-				parameterReader = this.reqCtxParamReadersFactory.createReader(parameterDescriptor, configurationContext);
-				if (parameterReader == null) {
-					parameterReader = this.reqParamReadersFactory.createReader(parameterDescriptor, configurationContext);
-				}
-			}
-		} catch (Throwable th) {
-			th.printStackTrace();
-		}
 
-		Assert.notNull(method, String.format("Resolved no parameter reader for the context parameter %d of the request handler method %s. This app must be compiled with keep annotation in proguard to fix this probelm.", new Object[]{Integer.valueOf(parameterDescriptor.getIndex()), configurationContext.getHandlerMethodName()}));
+		Assert.notNull(method, String.format("Resolved no parameter reader for the context parameter %d of the request handler method %s.", Integer.valueOf(parameterDescriptor.getIndex()), configurationContext.getHandlerMethodName()));
 		
 		return parameterReader;
     }
 
     /* access modifiers changed from: private */
-    public ParameterDescriptor findNamedParameter(ParameterDescriptor[] parameterDescriptorArr, String str) {
+    private ParameterDescriptor findNamedParameter(ParameterDescriptor[] parameterDescriptorArr, String str) {
         for (ParameterDescriptor parameterDescriptor : parameterDescriptorArr) {
-            ParamName paramName = (ParamName) parameterDescriptor.getAnnotation(ParamName.class);
+            ParamName paramName = parameterDescriptor.getAnnotation(ParamName.class);
             if (paramName != null && str.equals(paramName.value())) {
                 return parameterDescriptor;
             }
@@ -109,7 +93,7 @@ public class AnnotationDrivenRequestDispatcherConfigurer {
         if (method.getAnnotation(GiantLocked.class) != null) {
             return Subsystem.values();
         }
-        Locks locks = (Locks) method.getAnnotation(Locks.class);
+        Locks locks = method.getAnnotation(Locks.class);
         if (locks == null) {
             return new Subsystem[0];
         }

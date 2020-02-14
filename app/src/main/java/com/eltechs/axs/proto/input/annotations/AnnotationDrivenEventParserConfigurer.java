@@ -8,8 +8,6 @@ import com.eltechs.axs.proto.input.impl.EventParameterReaderFactory;
 import com.eltechs.axs.proto.input.parameterReaders.ParameterReader;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import android.util.*;
-import com.eltechs.ed.*;
 
 public abstract class AnnotationDrivenEventParserConfigurer {
     private AnnotationDrivenEventParserConfigurer() {
@@ -19,11 +17,9 @@ public abstract class AnnotationDrivenEventParserConfigurer {
         // Method[] methods;
         EventParsersRegistry eventParsersRegistry = new EventParsersRegistry();
         for (Method method : cls.getMethods()) {
-            EventId eventId = (EventId) method.getAnnotation(EventId.class);
+            EventId eventId = method.getAnnotation(EventId.class);
             if (eventId != null) {
-                if (!Modifier.isStatic(method.getModifiers()) || !Modifier.isPublic(method.getModifiers())) {
-					Log.d(EDApplicationState.TAG, String.format("Warning: Event parser method %s must be public and static (It might be a bug)", method.toString()));
-				}
+                Assert.state(!Modifier.isStatic(method.getModifiers()) || !Modifier.isPublic(method.getModifiers()), String.format("Warning: Event parser method %s must be public and static (It might be a bug)", method.toString()));
                 eventParsersRegistry.installEventParser(eventId.id(), processOneMethod(method));
             }
         }

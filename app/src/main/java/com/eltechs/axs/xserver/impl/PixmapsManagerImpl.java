@@ -1,5 +1,7 @@
 package com.eltechs.axs.xserver.impl;
 
+import android.util.ArrayMap;
+
 import com.eltechs.axs.xserver.Drawable;
 import com.eltechs.axs.xserver.DrawablesManager;
 import com.eltechs.axs.xserver.Pixmap;
@@ -12,7 +14,7 @@ import java.util.Map;
 public class PixmapsManagerImpl implements PixmapsManager {
     private final DrawablesManager drawablesManager;
     private final PixmapLifecycleListenerList pixmapLifecycleListenersList;
-    private final Map<Integer, Pixmap> pixmaps = new HashMap();
+    private final Map<Integer, Pixmap> pixmaps = new ArrayMap<Integer, Pixmap>();
 
     public PixmapsManagerImpl(DrawablesManager drawablesManager2) {
         this.drawablesManager = drawablesManager2;

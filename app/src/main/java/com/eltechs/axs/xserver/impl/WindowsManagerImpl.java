@@ -1,5 +1,8 @@
 package com.eltechs.axs.xserver.impl;
 
+import android.util.ArrayMap;
+import android.util.SparseArray;
+
 import com.eltechs.axs.geom.Rectangle;
 import com.eltechs.axs.helpers.Assert;
 import com.eltechs.axs.xserver.Drawable;
@@ -38,7 +41,7 @@ public class WindowsManagerImpl implements WindowsManager {
     private final WindowChangeListenersList windowChangeListenersList;
     private final WindowContentModificationListenersList windowContentModificationListenersList;
     private final WindowLifecycleListenersList windowLifecycleListenersList;
-    private final Map<Integer, Window> windows = new HashMap();
+    private final Map<Integer, Window> windows = new ArrayMap<Integer, Window>();
 
     public WindowsManagerImpl(ScreenInfo screenInfo, DrawablesManager drawablesManager2) {
         this.drawablesManager = drawablesManager2;
@@ -46,14 +49,12 @@ public class WindowsManagerImpl implements WindowsManager {
         this.windowLifecycleListenersList = new WindowLifecycleListenersList();
         this.windowChangeListenersList = new WindowChangeListenersList();
         int generateId = SmallIdsGenerator.generateId();
-        DrawablesManager drawablesManager3 = drawablesManager2;
-        int i = generateId;
-        Drawable createDrawable = drawablesManager3.createDrawable(i, (Window) null, screenInfo.widthInPixels, screenInfo.heightInPixels, drawablesManager2.getPreferredVisual());
-        WindowImpl windowImpl = new WindowImpl(i, createDrawable, null, this.windowContentModificationListenersList, this.windowChangeListenersList, null);
+        Drawable createDrawable = drawablesManager2.createDrawable(generateId, (Window) null, screenInfo.widthInPixels, screenInfo.heightInPixels, drawablesManager2.getPreferredVisual());
+        WindowImpl windowImpl = new WindowImpl(generateId, createDrawable, null, this.windowContentModificationListenersList, this.windowChangeListenersList, null);
         this.rootWindow = windowImpl;
         this.rootWindow.setBoundingRectangle(new Rectangle(0, 0, screenInfo.widthInPixels, screenInfo.heightInPixels));
         this.rootWindow.getWindowAttributes().setMapped(true);
-        this.windows.put(Integer.valueOf(createDrawable.getId()), this.rootWindow);
+        this.windows.put(createDrawable.getId(), this.rootWindow);
     }
 
     public Window getRootWindow() {
@@ -61,12 +62,12 @@ public class WindowsManagerImpl implements WindowsManager {
     }
 
     public Window getWindow(int i) {
-        return (Window) this.windows.get(Integer.valueOf(i));
+        return (Window) this.windows.get(i);
     }
 
     public Window createWindow(int i, Window window, int i2, int i3, int i4, int i5, Visual visual, boolean z, XClient xClient) {
         Drawable drawable;
-        if (this.windows.containsKey(Integer.valueOf(i))) {
+        if (this.windows.containsKey(i)) {
             return null;
         }
         if (!z) {

@@ -296,10 +296,9 @@ public class WindowManipulationRequests extends HandlerObjectBase {
         xClient2.installEventListener(createWindow, emptyMask);
         WindowAttributes windowAttributes = createWindow.getWindowAttributes();
         windowAttributes.setBorderWidth(i6);
-        Mask<WindowAttributeNames> mask5 = mask4;
         windowAttributes.update(mask4, num3, num4, bitGravity, winGravity, backingStore, num5, num6, bool, bool2, mask3, num7, cursor);
-        mask5.isSet(WindowAttributeNames.BACKGROUND_PIXMAP);
-        if (mask5.isSet(WindowAttributeNames.BACKGROUND_PIXEL)) {
+        mask4.isSet(WindowAttributeNames.BACKGROUND_PIXMAP);
+        if (mask4.isSet(WindowAttributeNames.BACKGROUND_PIXEL)) {
             createWindow.getActiveBackingStore().getPainter().fillWithColor(num2.intValue());
         }
         xClient2.registerAsOwnerOfWindow(createWindow);
@@ -309,19 +308,15 @@ public class WindowManipulationRequests extends HandlerObjectBase {
     @RequestHandler(opcode = 2)
     @Locks({"WINDOWS_MANAGER", "COLORMAPS_MANAGER", "CURSORS_MANAGER"})
     public void ChangeWindowAttributes(XClient xClient, @RequestParam Window window, @RequestParam @ParamName("mask") Mask<WindowAttributeNames> mask, @RequestParam @Optional(bit = "BACKGROUND_PIXMAP") Integer num, @RequestParam @Optional(bit = "BACKGROUND_PIXEL") Integer num2, @RequestParam @Optional(bit = "BORDER_PIXMAP") Integer num3, @RequestParam @Optional(bit = "BORDER_PIXEL") Integer num4, @RequestParam @Width(4) @Optional(bit = "BIT_GRAVITY") BitGravity bitGravity, @RequestParam @Width(4) @Optional(bit = "WIN_GRAVITY") WinGravity winGravity, @RequestParam @Width(4) @Optional(bit = "BACKING_STORE") BackingStore backingStore, @RequestParam @Optional(bit = "BACKING_PLANES") Integer num5, @RequestParam @Optional(bit = "BACKING_PIXEL") Integer num6, @RequestParam @Width(4) @Optional(bit = "OVERRIDE_REDIRECT") Boolean bool, @RequestParam @Width(4) @Optional(bit = "SAVE_UNDER") Boolean bool2, @RequestParam @Optional(bit = "EVENT_MASK") Mask<EventName> mask2, @RequestParam @Optional(bit = "DO_NOT_PROPAGATE_MASK") Mask<EventName> mask3, @RequestParam @Optional(bit = "COLORMAP") Integer num7, @RequestParam @SpecialNullValue(0) @Optional(bit = "CURSOR") Cursor cursor) throws XProtocolError {
-        XClient xClient2 = xClient;
-        Window window2 = window;
-        Mask<WindowAttributeNames> mask4 = mask;
-        Mask<EventName> mask5 = mask2;
-        if (mask5 != null) {
-            if ((!mask5.isSet(EventName.SUBSTRUCTURE_REDIRECT) || !willBeInConflict(xClient2, window2, EventName.SUBSTRUCTURE_REDIRECT)) && ((!mask5.isSet(EventName.RESIZE_REDIRECT) || !willBeInConflict(xClient2, window2, EventName.RESIZE_REDIRECT)) && (!mask5.isSet(EventName.BUTTON_PRESS) || !willBeInConflict(xClient2, window2, EventName.BUTTON_PRESS)))) {
-                xClient2.installEventListener(window2, mask5);
+        if (mask2 != null) {
+            if ((!mask2.isSet(EventName.SUBSTRUCTURE_REDIRECT) || !willBeInConflict(xClient, window, EventName.SUBSTRUCTURE_REDIRECT)) && ((!mask2.isSet(EventName.RESIZE_REDIRECT) || !willBeInConflict(xClient, window, EventName.RESIZE_REDIRECT)) && (!mask2.isSet(EventName.BUTTON_PRESS) || !willBeInConflict(xClient, window, EventName.BUTTON_PRESS)))) {
+                xClient.installEventListener(window, mask2);
             } else {
                 throw new BadAccess();
             }
         }
-        Mask<WindowAttributeNames> mask6 = mask4;
-        window.getWindowAttributes().update(mask4, num3, num4, bitGravity, winGravity, backingStore, num5, num6, bool, bool2, mask3, num7, cursor);
+        Mask<WindowAttributeNames> mask6 = mask;
+        window.getWindowAttributes().update(mask, num3, num4, bitGravity, winGravity, backingStore, num5, num6, bool, bool2, mask3, num7, cursor);
         mask6.isSet(WindowAttributeNames.BACKGROUND_PIXMAP);
         if (mask6.isSet(WindowAttributeNames.BACKGROUND_PIXEL)) {
             window.getActiveBackingStore().getPainter().fillWithColor(num2.intValue());

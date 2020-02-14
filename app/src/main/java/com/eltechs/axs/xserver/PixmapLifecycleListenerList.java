@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class PixmapLifecycleListenerList {
-    private final Collection<PixmapLifecycleListener> listeners = new ArrayList();
+    private final Collection<PixmapLifecycleListener> listeners = new ArrayList<PixmapLifecycleListener>();
 
     public void addListener(PixmapLifecycleListener pixmapLifecycleListener) {
         this.listeners.add(pixmapLifecycleListener);

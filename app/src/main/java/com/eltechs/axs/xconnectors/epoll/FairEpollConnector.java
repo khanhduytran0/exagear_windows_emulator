@@ -55,8 +55,7 @@ public class FairEpollConnector<Context> {
 
     public void start() throws IOException {
         Assert.state(this.processorThread == null, "The connector is already running.");
-        EpollProcessorThread epollProcessorThread = new EpollProcessorThread(this.connectionListenerFactory.createConnectionListener(), this.connectionHandler, this.requestHandler, this.bufferSizeConfiguration, this.batchSize);
-        this.processorThread = epollProcessorThread;
+        this.processorThread = new EpollProcessorThread(this.connectionListenerFactory.createConnectionListener(), this.connectionHandler, this.requestHandler, this.bufferSizeConfiguration, this.batchSize);
         this.processorThread.startProcessing();
     }
 

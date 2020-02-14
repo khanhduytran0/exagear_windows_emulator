@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class WindowChildrenList {
-    private final List<Window> children = new ArrayList();
+    private final List<Window> children = new ArrayList<Window>();
     private final Window host;
     private final List<Window> immutableChildren = Collections.unmodifiableList(this.children);
 

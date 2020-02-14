@@ -14,7 +14,7 @@ import java.util.Queue;
 public class EpollProcessorThread<Context> extends Thread {
     private final int batchSize;
     private final BufferSizeConfiguration bufferSizeConfiguration;
-    private final ClientsWithUnprocessedMessagesQueue clientsWithUnprocessedMessages = new ClientsWithUnprocessedMessagesQueue();
+    private final ClientsWithUnprocessedMessagesQueue clientsWithUnprocessedMessages;
     private final ConnectionHandler<Context> connectionHandler;
     private final ConnectionListener connectionListener;
     @UsedByNativeCode
@@ -99,6 +99,7 @@ public class EpollProcessorThread<Context> extends Thread {
     }
 
     public EpollProcessorThread(ConnectionListener connectionListener2, ConnectionHandler<Context> connectionHandler2, RequestHandler<Context> requestHandler2, BufferSizeConfiguration bufferSizeConfiguration2, int i) throws IOException {
+        this.clientsWithUnprocessedMessages = new ClientsWithUnprocessedMessagesQueue();
         this.connectionListener = connectionListener2;
         this.connectionHandler = connectionHandler2;
         this.requestHandler = requestHandler2;

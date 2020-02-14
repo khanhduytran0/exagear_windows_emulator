@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 public class ColormapLifecycleListenerList {
-    private final Collection<ColormapLifecycleListener> listeners = new ArrayList();
+    private final Collection<ColormapLifecycleListener> listeners = new ArrayList<ColormapLifecycleListener>();
 
     public void addListener(ColormapLifecycleListener colormapLifecycleListener) {
         this.listeners.add(colormapLifecycleListener);

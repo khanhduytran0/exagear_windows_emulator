@@ -8,9 +8,7 @@ public class EventParsersRegistry {
 
     public void installEventParser(int i, EventParser eventParser) {
         if (this.eventParsers.length <= i) {
-            EventParser[] eventParserArr = new EventParser[(i + 1)];
-            System.arraycopy(this.eventParsers, 0, eventParserArr, 0, this.eventParsers.length);
-            this.eventParsers = eventParserArr;
+            this.eventParsers = new EventParser[(i + 1)];
         }
         Assert.state(this.eventParsers[i] == null, String.format("A handler for the opcode %d is already registered.", new Object[]{Integer.valueOf(i)}));
         this.eventParsers[i] = eventParser;

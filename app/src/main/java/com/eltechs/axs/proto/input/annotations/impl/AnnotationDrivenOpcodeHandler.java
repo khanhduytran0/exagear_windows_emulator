@@ -30,7 +30,7 @@ public class AnnotationDrivenOpcodeHandler implements OpcodeHandler {
     }
 
     private XServer getXServer() {
-        Assert.isTrue(handlerObject instanceof BoundToXServer, String.format("Request handler objects must be bound to a X-Server, but %s is not.", new Object[]{this.handlerObject.getClass().getSimpleName()}));
+        Assert.isTrue(handlerObject instanceof BoundToXServer, String.format("Request handler objects must be bound to a X-Server, but %s is not.", this.handlerObject.getClass().getSimpleName()));
         return ((BoundToXServer) this.handlerObject).getXServer();
     }
 
@@ -42,9 +42,7 @@ public class AnnotationDrivenOpcodeHandler implements OpcodeHandler {
             this.handlerMethod.invoke(this.handlerObject, this.requestParser.getRequestHandlerParameters(xClient, this.xServer, xRequest, xResponse, i, b));
             if (lock != null) {
                 lock.close();
-                return;
             }
-            return;
         } catch (InvocationTargetException e) {
             Throwable targetException = e.getTargetException();
             if (targetException instanceof IOException) {
@@ -53,10 +51,8 @@ public class AnnotationDrivenOpcodeHandler implements OpcodeHandler {
                 throw ((XProtocolError) targetException);
             } else {
                 targetException.printStackTrace();
-                return;
             }
         } catch (IllegalAccessException unused) {
-            return;
         } catch (Throwable th2) {
             // th.addSuppressed(th2);
 			throw new RuntimeException(th2);

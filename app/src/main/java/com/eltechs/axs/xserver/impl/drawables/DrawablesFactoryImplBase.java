@@ -1,5 +1,7 @@
 package com.eltechs.axs.xserver.impl.drawables;
 
+import android.util.Log;
+
 import java.util.Collection;
 import java.util.Collections;
 
@@ -38,6 +40,7 @@ public abstract class DrawablesFactoryImplBase implements DrawablesFactory {
         return this.preferredVisual;
     }
 
+    @Override
     public final Visual getPreferredVisualForDepth(int i) {
         if (i == this.preferredVisual.getDepth()) {
             return this.preferredVisual;

@@ -83,9 +83,7 @@ public class RootXRequestHandler implements RequestHandler<XClient> {
 				extensionRequestHandler.handleRequest(xClient, b, b2, i, xRequest, xResponse);
 			}
 		} catch (Throwable th) {
-			th.printStackTrace();
-			FatalErrorActivity.showFatalError(th.getMessage());
-			// throw new RuntimeException(th);
+			throw new RuntimeException(th);
 		}
     }
 

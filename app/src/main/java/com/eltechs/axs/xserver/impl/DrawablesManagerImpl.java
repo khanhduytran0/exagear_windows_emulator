@@ -1,5 +1,7 @@
 package com.eltechs.axs.xserver.impl;
 
+import android.util.Log;
+
 import com.eltechs.axs.helpers.ArithHelpers;
 import com.eltechs.axs.xserver.Drawable;
 import com.eltechs.axs.xserver.DrawablesManager;

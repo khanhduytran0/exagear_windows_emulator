@@ -7,7 +7,7 @@ import java.util.List;
 
 public class ActionGroup {
     private boolean exclusive;
-    private final List<Action> members = new ArrayList();
+    private final List<Action> members = new ArrayList<Action>();
 
     public void add(Action action) {
         this.members.add(action);
