@@ -1,7 +1,9 @@
 # exagear_windows_emulator
 Source code of Exagear Windows Emulator.
 
-***Note: Only Java codes were decompiled!***
+***Notes: Only Java codes were decompiled!***
+<br>
+***Wine and Linux launch didn't worked now. If you know how to fix, help me!***
 
 # Features:
 - Cleaned license check and In-app purchase code. 
