@@ -10,25 +10,20 @@ import com.eltechs.axs.xserver.events.UnmapNotify;
 import java.nio.ByteBuffer;
 
 public abstract class EventBuilders {
-    private EventBuilders() {
-    }
-
     @EventId(id = 33)
-    public static ClientMessage parseClientMessage(byte b, short s, Window window, Atom atom, ByteBuffer byteBuffer) {
-        byte[] bArr = new byte[byteBuffer.limit()];
-        byteBuffer.get(bArr, 0, byteBuffer.limit());
-        ClientMessage clientMessage = new ClientMessage(b, s, window, atom, bArr);
-        return clientMessage;
-    }
-
-    @EventId(id = 18)
-    public static UnmapNotify parseUnmapNotify(byte b, short s, Window window, Window window2, boolean z, ByteBuffer byteBuffer) {
-        return new UnmapNotify(window, window2, z);
+    public static ClientMessage parseClientMessage(byte paramByte, short paramShort, Window paramWindow, Atom paramAtom, ByteBuffer paramByteBuffer) {
+        byte[] arrayOfByte = new byte[paramByteBuffer.limit()];
+        paramByteBuffer.get(arrayOfByte, 0, paramByteBuffer.limit());
+        return new ClientMessage(paramByte, paramShort, paramWindow, paramAtom, arrayOfByte);
     }
 
     @EventId(id = 31)
-    public static SelectionNotify parseSelectionNotify(byte b, short s, int i, Window window, Atom atom, Atom atom2, @SpecialNullValue(0) Atom atom3, ByteBuffer byteBuffer) {
-        SelectionNotify selectionNotify = new SelectionNotify(i, window, atom, atom2, atom3);
-        return selectionNotify;
+    public static SelectionNotify parseSelectionNotify(byte paramByte, short paramShort, int paramInt, Window paramWindow, Atom paramAtom1, Atom paramAtom2, @SpecialNullValue(0) Atom paramAtom3, ByteBuffer paramByteBuffer) {
+        return new SelectionNotify(paramInt, paramWindow, paramAtom1, paramAtom2, paramAtom3);
+    }
+
+    @EventId(id = 18)
+    public static UnmapNotify parseUnmapNotify(byte paramByte, short paramShort, Window paramWindow1, Window paramWindow2, boolean paramBoolean, ByteBuffer paramByteBuffer) {
+        return new UnmapNotify(paramWindow1, paramWindow2, paramBoolean);
     }
 }

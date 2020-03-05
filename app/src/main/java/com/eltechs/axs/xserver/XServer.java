@@ -46,7 +46,7 @@ public class XServer {
     private final SelectionsManagerImpl selectionsManager;
     private final ShmSegmentsManagerImpl shmSegmentsManager;
     private final WindowsManager windowsManager;
-
+// NEVER USED:
     public interface Lock extends AutoCloseable {
     }
 
@@ -78,9 +78,7 @@ public class XServer {
             this.selectionsManager = new SelectionsManagerImpl(this);
             if (lock != null) {
                 lock.close();
-                return;
             }
-            return;
         } catch (Throwable th2) {
             // th.addSuppressed(th2);
 			throw new RuntimeException(th2);

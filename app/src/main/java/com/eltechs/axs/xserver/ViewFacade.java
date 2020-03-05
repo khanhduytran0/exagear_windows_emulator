@@ -187,28 +187,48 @@ public class ViewFacade {
         return;
     }
 
-    /* JADX WARNING: Can't wrap try/catch for region: R(14:0|1|2|(2:4|5)|29|6|7|8|9|10|(2:12|13)|30|(2:15|31)(1:32)|(1:(1:28))) */
-    /* JADX WARNING: Missing exception handler attribute for start block: B:9:0x0023 */
-    /* JADX WARNING: Removed duplicated region for block: B:12:0x0027 A[Catch:{ Throwable -> 0x003d, all -> 0x003b, Throwable -> 0x0048 }] */
-    /* JADX WARNING: Removed duplicated region for block: B:15:0x0037  */
-    /* JADX WARNING: Removed duplicated region for block: B:32:? A[RETURN, SYNTHETIC] */
-    public void injectMultiKeyType(byte[] bArr) {
-        XLock lockForInputDevicesManipulation = this.xServer.getLocksManager().lockForInputDevicesManipulation();
+
+    public void injectMultiKeyType(byte[] paramArrayOfbyte) {
+        LocksManager.XLock xLock = this.xServer.getLocksManager().lockForInputDevicesManipulation();
+        Throwable throwable2 = null;
+        Throwable throwable1 = throwable2;
         try {
-            for (byte injectKeyPress : bArr) {
-                this.xServer.getEventsInjector().injectKeyPress(injectKeyPress, 0);
+            int j = paramArrayOfbyte.length;
+            int i;
+            for (i = 0; i < j; i++) {
+                byte b = paramArrayOfbyte[i];
+                throwable1 = throwable2;
+                this.xServer.getEventsInjector().injectKeyPress(b, 0);
             }
-            Thread.sleep(50);
-            for (byte injectKeyRelease : bArr) {
-                this.xServer.getEventsInjector().injectKeyRelease(injectKeyRelease, 0);
+            throwable1 = throwable2;
+            try {
+                Thread.sleep(50L);
+            } catch (InterruptedException interruptedException) {}
+            throwable1 = throwable2;
+            j = paramArrayOfbyte.length;
+            for (i = 0; i < j; i++) {
+                byte b = paramArrayOfbyte[i];
+                throwable1 = throwable2;
+                this.xServer.getEventsInjector().injectKeyRelease(b, 0);
             }
-            if (lockForInputDevicesManipulation == null) {
-                lockForInputDevicesManipulation.close();
-                return;
-            }
+            if (xLock != null)
+                xLock.close();
             return;
-        } catch (Throwable th2) {
-            throw new RuntimeException(th2);
+        } catch (Throwable throwable) {
+            throwable1 = throwable;
+            throw throwable;
+        } finally {
+            if (xLock != null)
+                if (throwable1 != null) {
+                    try {
+                        xLock.close();
+                    } catch (Throwable throwable) {
+                        throwable1.addSuppressed(throwable);
+                    }
+                    throw new RuntimeException(throwable1);
+                } else {
+                    xLock.close();
+                }
         }
     }
 
@@ -289,80 +309,70 @@ public class ViewFacade {
         }
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:11:0x0028, code lost:
-        if (r0 != null) goto L_0x002a;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:12:0x002a, code lost:
-        if (r5 != null) goto L_0x002c;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:14:?, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0030, code lost:
-        r0 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0031, code lost:
-        r5.addSuppressed(r0);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:17:0x0035, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:7:0x0024, code lost:
-        r1 = move-exception;
-     */
-    public void injectPointerWheelUp(int i) {
-        XLock lockForInputDevicesManipulation = this.xServer.getLocksManager().lockForInputDevicesManipulation();
-        while (true) {
-            int i2 = i - 1;
-            if (i > 0) {
+    public void injectPointerWheelUp(int paramInt) {
+        LocksManager.XLock xLock = this.xServer.getLocksManager().lockForInputDevicesManipulation();
+        while (paramInt > 0) {
+            Throwable throwable2 = null;
+            Throwable throwable1 = throwable2;
+            try {
                 this.xServer.getEventsInjector().injectPointerButtonPress(4);
+                throwable1 = throwable2;
                 this.xServer.getEventsInjector().injectPointerButtonRelease(4);
-                i = i2;
-            } else if (lockForInputDevicesManipulation != null) {
-                lockForInputDevicesManipulation.close();
-                return;
-            } else {
-                return;
+                paramInt--;
+                continue;
+            } catch (Throwable throwable3) {
+                throwable1 = throwable3;
+                throw throwable3;
+            } finally {
+                if (xLock != null)
+                    if (throwable1 != null) {
+                        try {
+                            xLock.close();
+                        } catch (Throwable throwable) {
+                            throwable1.addSuppressed(throwable);
+                        }
+                        throw new RuntimeException(throwable1);
+                    } else {
+                        xLock.close();
+                    }
             }
         }
+
+        if (xLock != null)
+            xLock.close();
+
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:11:0x0028, code lost:
-        if (r0 != null) goto L_0x002a;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:12:0x002a, code lost:
-        if (r5 != null) goto L_0x002c;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:14:?, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0030, code lost:
-        r0 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0031, code lost:
-        r5.addSuppressed(r0);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:17:0x0035, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:7:0x0024, code lost:
-        r1 = move-exception;
-     */
-    public void injectPointerWheelDown(int i) {
-        XLock lockForInputDevicesManipulation = this.xServer.getLocksManager().lockForInputDevicesManipulation();
-        while (true) {
-            int i2 = i - 1;
-            if (i > 0) {
+    public void injectPointerWheelDown(int paramInt) {
+        LocksManager.XLock xLock = this.xServer.getLocksManager().lockForInputDevicesManipulation();
+        while (paramInt > 0) {
+            Throwable throwable2 = null;
+            Throwable throwable1 = throwable2;
+            try {
                 this.xServer.getEventsInjector().injectPointerButtonPress(5);
+                throwable1 = throwable2;
                 this.xServer.getEventsInjector().injectPointerButtonRelease(5);
-                i = i2;
-            } else if (lockForInputDevicesManipulation != null) {
-                lockForInputDevicesManipulation.close();
-                return;
-            } else {
-                return;
+                paramInt--;
+                continue;
+            } catch (Throwable throwable3) {
+                throwable1 = throwable3;
+                throw throwable3;
+            } finally {
+                if (xLock != null)
+                    if (throwable1 != null) {
+                        try {
+                            xLock.close();
+                        } catch (Throwable throwable) {
+                            throwable1.addSuppressed(throwable);
+                        }
+                        throw new RuntimeException(throwable1);
+                    } else {
+                        xLock.close();
+                    }
             }
         }
+        if (xLock != null)
+            xLock.close();
     }
 
     public void injectPointerButtonRelease(int i) {
@@ -578,35 +588,34 @@ public class ViewFacade {
         return this.xServer.getScreenInfo();
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:10:0x0028, code lost:
-        if (r0 != null) goto L_0x002a;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:11:0x002a, code lost:
-        if (r1 != null) goto L_0x002c;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:13:?, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:14:0x0030, code lost:
-        r0 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0031, code lost:
-        r1.addSuppressed(r0);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0035, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:6:0x0024, code lost:
-        r2 = move-exception;
-     */
     public Point getPointerLocation() {
-        XLock lockForInputDevicesManipulation = this.xServer.getLocksManager().lockForInputDevicesManipulation();
-        Pointer pointer = this.xServer.getPointer();
-        Point point = new Point(pointer.getX(), pointer.getY());
-        if (lockForInputDevicesManipulation != null) {
-            lockForInputDevicesManipulation.close();
+        Throwable throwable = null;
+        LocksManager.XLock xLock = this.xServer.getLocksManager().lockForInputDevicesManipulation();
+        Point point2 = null;
+        Point point1 = point2;
+        try {
+            Pointer pointer = this.xServer.getPointer();
+            point1 = point2;
+            point2 = new Point(pointer.getX(), pointer.getY());
+            if (xLock != null)
+                xLock.close();
+            return point2;
+        } catch (Throwable throwable1) {
+            throwable = throwable1;
+            throw throwable1;
+        } finally {
+            if (xLock != null)
+                if (throwable != null) {
+                    try {
+                        xLock.close();
+                    } catch (Throwable throwable1) {
+                        throwable.addSuppressed(throwable1);
+                    }
+                    throw new RuntimeException(throwable);
+                } else {
+                    xLock.close();
+                }
         }
-        return point;
     }
 
     public void addKeyboardListener(KeyboardListener keyboardListener) {

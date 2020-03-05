@@ -45,30 +45,6 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
     private View uiOverlayView;
     private ViewOfXServer viewOfXServer;
 
-    private static class NoMenuPopup implements Runnable {
-        public static final Runnable INSTANCE = new NoMenuPopup();
-
-        public void run() {
-        }
-
-        private NoMenuPopup() {
-        }
-    }
-
-    private static class TrivialInterfaceOverlay implements XServerDisplayActivityInterfaceOverlay {
-        public void detach() {
-        }
-
-        private TrivialInterfaceOverlay() {
-        }
-
-        public View attach(XServerDisplayActivity xServerDisplayActivity, ViewOfXServer viewOfXServer) {
-            View view = new View(xServerDisplayActivity);
-            view.setBackgroundColor(xServerDisplayActivity.getResources().getColor(17170445));
-            return view;
-        }
-    }
-	
     @Autowired
     private void setXServerDisplayActivityInterfaceOverlay(XServerDisplayActivityInterfaceOverlay xServerDisplayActivityInterfaceOverlay) {
         this.interfaceOverlay = xServerDisplayActivityInterfaceOverlay;
@@ -106,6 +82,7 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
 		setXServerDisplayActivityInterfaceOverlay(new TrivialInterfaceOverlay());
     }
 
+    /* access modifiers changed from: protected */
     public void onResume() {
         super.onResume();
         if (!checkForSuddenDeath()) {
@@ -118,11 +95,11 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
                 environment.resumeEnvironment();
             }
             // checkIab();
-            if (getApplicationContext().getPackageName().equals("com.eltechs.ed")) {
+            if (getApplicationContext().getPackageName().equals(BuildConfig.APPLICATION_ID)) {
                 AppConfig instance = AppConfig.getInstance(this);
                 DialogFragment controlsInfoDialog = ((SelectedExecutableFileAware) getApplicationState()).getSelectedExecutableFile().getControlsInfoDialog();
                 String controlsId = ((SelectedExecutableFileAware) getApplicationState()).getSelectedExecutableFile().getControlsId();
-                Set controlsWithInfoShown = instance.getControlsWithInfoShown();
+                Set<String> controlsWithInfoShown = instance.getControlsWithInfoShown();
                 if (!controlsWithInfoShown.contains(controlsId)) {
                     controlsInfoDialog.show(getSupportFragmentManager(), "CONTROLS_INFO");
                     controlsWithInfoShown.add(controlsId);
@@ -141,13 +118,13 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
 
     private boolean checkForSuddenDeath() {
         if (Globals.getApplicationState() != null) {
-            return ENABLE_TRACING_METHODS;
+            return false;
         }
         FatalErrorActivity.showFatalError(getResources().getString(R.string.xda_guest_suddenly_died));
         finish();
         return true;
     }
-	
+    /* access modifiers changed from: protected */
     public void onPause() {
         super.onPause();
         AXSEnvironment environment = getApplicationState().getEnvironment();
@@ -160,29 +137,29 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
         getRootLayout().removeAllViews();
     }
 
+    /* access modifiers changed from: protected */
     public void onDestroy() {
         super.onDestroy();
         this.viewOfXServer = null;
-        setContentView(new TextView(this));
+        setContentView((View) new TextView(this));
         this.periodicIabCheckTimer.cancel();
         this.periodicIabCheckTimer = null;
     }
 
+    /* access modifiers changed from: protected */
     public void onActivityResult(int i, int i2, Intent intent) {
-        if (i == REQUEST_CODE_INFORMER) {
-            if (i2 == 0) {
-                StartupActivity.shutdownAXSApplication();
-                finish();
-            }
-            return;
+        if (i != REQUEST_CODE_INFORMER) {
+            super.onActivityResult(i, i2, intent);
+        } else if (i2 == 0) {
+            StartupActivity.shutdownAXSApplication();
+            finish();
         }
-        super.onActivityResult(i, i2, intent);
     }
 
     public void addDefaultPopupMenu(List<? extends Action> list) {
-        View textView = new TextView(this);
-        textView.setBackgroundColor(getResources().getColor(17170445));
-        getRootLayout().addView(textView, new LayoutParams(0, 0, 5));
+        TextView textView = new TextView(this);
+        textView.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        getRootLayout().addView(textView, new FrameLayout.LayoutParams(0, 0, 5));
         final AXSPopupMenu aXSPopupMenu = new AXSPopupMenu(this, textView);
         aXSPopupMenu.add(list);
         this.contextMenuRequestHandler = new Runnable() {
@@ -194,7 +171,7 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
 
     public void placeViewOfXServer(int i, int i2, int i3, int i4) {
         if (this.viewOfXServer != null) {
-            LayoutParams layoutParams = (LayoutParams) this.viewOfXServer.getLayoutParams();
+            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) this.viewOfXServer.getLayoutParams();
             if (layoutParams.leftMargin != i || layoutParams.topMargin != i2 || layoutParams.width != i3 || layoutParams.height != i4) {
                 layoutParams.leftMargin = i;
                 layoutParams.topMargin = i2;
@@ -222,6 +199,30 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
         return (FrameLayout) findViewById(R.id.mainView);
     }
 
+    private static class NoMenuPopup implements Runnable {
+        public static final Runnable INSTANCE = new NoMenuPopup();
+
+        public void run() {
+        }
+
+        private NoMenuPopup() {
+        }
+    }
+
+    private static class TrivialInterfaceOverlay implements XServerDisplayActivityInterfaceOverlay {
+        public void detach() {
+        }
+
+        private TrivialInterfaceOverlay() {
+        }
+
+        public View attach(XServerDisplayActivity xServerDisplayActivity, ViewOfXServer viewOfXServer) {
+            View view = new View(xServerDisplayActivity);
+            view.setBackgroundColor(xServerDisplayActivity.getResources().getColor(android.R.color.transparent));
+            return view;
+        }
+    }
+
     public void startInformerActivity(Intent intent) {
         startActivityForResult(intent, REQUEST_CODE_INFORMER);
     }
@@ -238,4 +239,3 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
         }
     }
 }
-

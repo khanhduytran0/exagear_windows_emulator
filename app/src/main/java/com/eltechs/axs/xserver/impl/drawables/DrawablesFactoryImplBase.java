@@ -45,11 +45,13 @@ public abstract class DrawablesFactoryImplBase implements DrawablesFactory {
         if (i == this.preferredVisual.getDepth()) {
             return this.preferredVisual;
         }
+
         for (Visual visual : this.supportedVisuals) {
             if (i == visual.getDepth()) {
                 return visual;
             }
         }
+        // TODO: FIXME it is always null.
         return null;
     }
 }

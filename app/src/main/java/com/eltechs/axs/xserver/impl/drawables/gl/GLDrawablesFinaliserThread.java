@@ -41,7 +41,7 @@ public class GLDrawablesFinaliserThread extends Thread {
 				runnable.run();
 			}
 		} catch (InterruptedException e) {
-			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
     }
 }

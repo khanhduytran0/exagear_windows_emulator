@@ -10,33 +10,34 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
 public abstract class AnnotationDrivenEventParserConfigurer {
-    private AnnotationDrivenEventParserConfigurer() {
+    private static ParameterReader configureParameterReader(ParameterDescriptor[] paramArrayOfParameterDescriptor, int paramInt) {
+        ParameterDescriptor parameterDescriptor = paramArrayOfParameterDescriptor[paramInt];
+        return EventParameterReaderFactory.INSTANCE.createReader(parameterDescriptor, null);
     }
 
-    public static EventParsersRegistry createParserRegistry(Class cls) {
-        // Method[] methods;
+    public static EventParsersRegistry createParserRegistry(Class paramClass) {
         EventParsersRegistry eventParsersRegistry = new EventParsersRegistry();
-        for (Method method : cls.getMethods()) {
-            EventId eventId = method.getAnnotation(EventId.class);
-            if (eventId != null) {
-                Assert.state(!Modifier.isStatic(method.getModifiers()) || !Modifier.isPublic(method.getModifiers()), String.format("Warning: Event parser method %s must be public and static (It might be a bug)", method.toString()));
-                eventParsersRegistry.installEventParser(eventId.id(), processOneMethod(method));
-            }
+        for (Method method : paramClass.getMethods()) {
+            EventId eventId = method.<EventId>getAnnotation(EventId.class);
+            if (eventId != null)
+//                if (Modifier.isStatic(method.getModifiers()) && Modifier.isPublic(method.getModifiers())) {
+                    eventParsersRegistry.installEventParser(eventId.id(), processOneMethod(method));
+//                } else {
+//                    Assert.state(false, String.format("Event parser method %s must be public and static", new Object[] { method.toString() }));
+//                }
         }
         return eventParsersRegistry;
     }
 
-    private static EventParser processOneMethod(Method method) {
-        ParameterDescriptor[] methodParameters = ParameterDescriptor.getMethodParameters(method);
-        int length = methodParameters.length;
-        ParameterReader[] parameterReaderArr = new ParameterReader[length];
-        for (int i = 0; i < length; i++) {
-            parameterReaderArr[i] = configureParameterReader(methodParameters, i);
+    private static EventParser processOneMethod(Method paramMethod) {
+        ParameterDescriptor[] arrayOfParameterDescriptor = ParameterDescriptor.getMethodParameters(paramMethod);
+        int i = 0;
+        int j = arrayOfParameterDescriptor.length;
+        ParameterReader[] arrayOfParameterReader = new ParameterReader[j];
+        while (i < j) {
+            arrayOfParameterReader[i] = configureParameterReader(arrayOfParameterDescriptor, i);
+            i++;
         }
-        return new EventParser(parameterReaderArr, method);
-    }
-
-    private static ParameterReader configureParameterReader(ParameterDescriptor[] parameterDescriptorArr, int i) {
-        return EventParameterReaderFactory.INSTANCE.createReader(parameterDescriptorArr[i], null);
+        return new EventParser(arrayOfParameterReader, paramMethod);
     }
 }

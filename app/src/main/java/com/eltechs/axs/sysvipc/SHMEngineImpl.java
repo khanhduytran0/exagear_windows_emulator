@@ -1,5 +1,7 @@
 package com.eltechs.axs.sysvipc;
 
+import android.util.Log;
+
 import com.eltechs.axs.helpers.Assert;
 import java.io.FileDescriptor;
 import java.io.IOException;
@@ -43,16 +45,21 @@ public class SHMEngineImpl implements SHMEngine {
             wrap.putInt(i);
             this.communicator.communicate(RequestCodes.SHM_GET_SIZE_AND_FD, bArr, bArr2, fileDescriptorArr);
             long j = wrap2.getLong();
-            if (wrap2.getInt() != 0) {
+            int intWrap2;
+            if ((intWrap2 = wrap2.getInt()) != 0) {
+                Log.w("EXAGEAR", "wrap2 = " + intWrap2 + " (!=0). Program might crashed.");
                 return null;
             }
             MappedByteBuffer mapAshmemSegment = mapAshmemSegment(fileDescriptorArr[0], j, z);
             if (mapAshmemSegment == null) {
+                Log.w("EXAGEAR", "mapAshmemSegment == null. Program might crashed.");
                 return null;
             }
             mapAshmemSegment.order(ByteOrder.nativeOrder());
             return new AttachedSHMSegmentImpl(mapAshmemSegment, j);
-        } catch (IOException unused) {
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.w("EXAGEAR", "An exception occurred. Program might crashed.");
             return null;
         }
     }
