@@ -1,5 +1,5 @@
 # exagear_windows_emulator
-Source code of Exagear Windows Emulator.
+Exagear Windows Emulator decompiled source code
 
 ***Notes: Only Java codes were decompiled!***
 <br>
