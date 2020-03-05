@@ -3,7 +3,7 @@ Source code of Exagear Windows Emulator.
 
 ***Notes: Only Java codes were decompiled!***
 <br>
-***Wine and Linux launch didn't worked now. If you know how to fix, help me!***
+***x11 Server and Linux launch didn't worked now. Help me to fix if you can!***
 
 # Features:
 - Cleaned license check and In-app purchase code. 
@@ -11,7 +11,8 @@ Source code of Exagear Windows Emulator.
 - (Experimental) Added advanced options.
 
 # Building:
-- Clone to Android Studio then click Build.
+- Only Android Studio is tested and worked.
+- Build tools: ant, make were not supported.
 - **Other (Eclipse,...) are not tested**
 
 # Info about decompiled version:
