@@ -1,9 +1,8 @@
 # exagear_windows_emulator
 Exagear Windows Emulator decompiled source code
 
-***Notes: Only Java codes were decompiled!***
+***Note: Only Java codes were decompiled!***
 <br>
-***x11 Server and Linux launch didn't worked now. Help me to fix if you can!***
 
 # Features:
 - Cleaned license check and In-app purchase code. 
@@ -15,8 +14,12 @@ Exagear Windows Emulator decompiled source code
 - Build tools: ant, make were not supported.
 - **Other (Eclipse,...) are not tested**
 
+# Known Issues:
+- X11 Server didn't work, this made the application useless (please help me to fix THIS).
+- Decompiled source code contains useless code.
+
 # Info about decompiled version:
-- Version: 3.0.1.
+- Version: 3.0.1, compatible with `main.30.com.eltechs.ed.obb`.
 - Decompilers: Jadx, jd-core and CFR.
 - App Libraries:
 ```
