@@ -10,9 +10,9 @@ Exagear Windows Emulator decompiled source code
 - (Experimental) Added advanced options.
 
 # Building:
-- Only Android Studio is tested and worked.
+- Only Android Studio was tested and worked.
 - Build tools: ant, make were not supported.
-- **Other (Eclipse,...) are not tested**
+- **Other (Eclipse,...) were not tested**
 
 # Known Issues:
 - X11 Server didn't work, this made the application useless (please help me to fix THIS).
@@ -32,5 +32,6 @@ com.github.iwgang:countdownview
 ```
 
 # Thanks to:
+- Eltechs for amazing Exagear Windows Emulator.
 - AkiraYuki & 4PDA developers for a mod version.
 - Jadx, jd-core and CFR for decompiled code.
