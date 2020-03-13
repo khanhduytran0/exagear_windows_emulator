@@ -4,9 +4,6 @@ Exagear Windows Emulator decompiled source code
 ***Note: Only Java codes were decompiled!***
 <br>
 
-# Changes
-- Closing source some components to make X11 Server working.
-
 # Features
 - Cleaned license check and In-app purchase code. 
 - (Experimental) Added an option to run Linux x86.
@@ -18,6 +15,7 @@ Exagear Windows Emulator decompiled source code
 - **Other (Eclipse,...) were not tested**
 
 # Known Issues
+- X11 Server didn't work, this made the application useless (feel free to create a pull request to fix).
 - Decompiled source code contains useless code.
 - Experimental features has no function yet.
 
