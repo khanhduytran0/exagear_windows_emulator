@@ -110,7 +110,7 @@ public class StartGuest<StateClass extends ApplicationStateBase<StateClass> & Se
 
     public static class RunXDGLink extends RunOption {
         /* access modifiers changed from: private */
-        public XDGLink mLink;
+        private XDGLink mLink;
 
         public RunXDGLink(XDGLink xDGLink) {
             this.mLink = xDGLink;

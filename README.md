@@ -5,7 +5,8 @@ Exagear Windows Emulator decompiled source code
 <br>
 
 # Changes on this branch
-- Closing source some components to make X11 Server working.
+- Closing source some components to attempt to make X11 Server working.
+_*Still not work, `<html><body>Guest applications died before showing anything.</body></html>`
 
 # Features
 - Cleaned license check and In-app purchase code. 
