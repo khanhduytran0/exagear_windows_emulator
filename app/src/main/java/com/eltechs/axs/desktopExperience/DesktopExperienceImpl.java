@@ -20,7 +20,6 @@ import com.eltechs.axs.xserver.XServer;
 import com.eltechs.axs.xserver.helpers.WindowHelpers;
 import java.nio.charset.Charset;
 import java.util.Map.Entry;
-import org.apache.commons.io.FilenameUtils;
 
 public class DesktopExperienceImpl implements DesktopExperience, PointerListener, WindowLifecycleListener {
     private XServer xServer;
@@ -60,36 +59,13 @@ public class DesktopExperienceImpl implements DesktopExperience, PointerListener
             initXResources();
             if (lock != null) {
                 lock.close();
-                return;
             }
-            return;
         } catch (Throwable th2) {
             th.addSuppressed(th2);
+            RuntimeException runtimeException = new RuntimeException(th);
         }
-        throw new RuntimeException(th);
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:10:0x0040, code lost:
-        if (r1 != null) goto L_0x0042;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:12:?, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:13:0x0046, code lost:
-        r0 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:14:0x0047, code lost:
-        r1.addSuppressed(r0);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x004b, code lost:
-        r0.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:5:0x003a, code lost:
-        r2 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:9:0x003e, code lost:
-        if (r0 != null) goto L_0x0040;
-     */
     public void detachFromXServer() {
         XLock lock = this.xServer.getLocksManager().lock(new Subsystem[]{Subsystem.DESKTOP_EXPERIENCE, Subsystem.INPUT_DEVICES, Subsystem.WINDOWS_MANAGER});
         this.xServer.getPointer().removeListener(this);
@@ -97,33 +73,9 @@ public class DesktopExperienceImpl implements DesktopExperience, PointerListener
         this.xServer.desktopExperienceDetached(this);
         if (lock != null) {
             lock.close();
-            return;
         }
-        return;
-        // throw th;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:11:0x0060, code lost:
-        r1 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0064, code lost:
-        if (r7 != null) goto L_0x0066;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0066, code lost:
-        if (r0 != null) goto L_0x0068;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:18:?, code lost:
-        r7.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:19:0x006c, code lost:
-        r7 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:20:0x006d, code lost:
-        r0.addSuppressed(r7);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:21:0x0071, code lost:
-        r7.close();
-     */
     public void pointerButtonPressed(int i) {
         XLock lock = this.xServer.getLocksManager().lock(new Subsystem[]{Subsystem.WINDOWS_MANAGER, Subsystem.FOCUS_MANAGER, Subsystem.INPUT_DEVICES});
         FocusManager focusManager = this.xServer.getFocusManager();
@@ -138,10 +90,7 @@ public class DesktopExperienceImpl implements DesktopExperience, PointerListener
         }
         if (lock != null) {
             lock.close();
-            return;
         }
-        return;
-        // throw th;
     }
 
     public void windowMapped(Window window) {
@@ -156,19 +105,21 @@ public class DesktopExperienceImpl implements DesktopExperience, PointerListener
     }
 
     private void setXResourceToWindow(Window window, XResource xResource) {
+        boolean z;
         AtomsManager atomsManager = this.xServer.getAtomsManager();
         Atom atom = atomsManager.getAtom("RESOURCE_MANAGER");
-        boolean z = false;
         Assert.state(atom != null, "Atom RESOURCE_MANAGER must be predefined");
         Atom atom2 = atomsManager.getAtom("STRING");
         if (atom2 != null) {
             z = true;
+        } else {
+            z = false;
         }
         Assert.state(z, "Atom STRING must be predefined");
         StringBuilder sb = new StringBuilder();
         for (Entry entry : xResource.getKeyValPairs().entrySet()) {
             sb.append(xResource.getName());
-            sb.append(FilenameUtils.EXTENSION_SEPARATOR);
+            sb.append('.');
             sb.append(entry.getKey());
             sb.append(':');
             sb.append(9);
