@@ -102,27 +102,6 @@ public class DirectSoundRequestHandler implements RequestHandler<DirectSoundClie
         }
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0023, code lost:
-        r4 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:19:0x0027, code lost:
-        if (r2 != null) goto L_0x0029;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:20:0x0029, code lost:
-        if (r3 != null) goto L_0x002b;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:22:?, code lost:
-        r2.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:23:0x002f, code lost:
-        r2 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:24:0x0030, code lost:
-        r3.addSuppressed(r2);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:25:0x0034, code lost:
-        r2.close();
-     */
     private ProcessingResult attach(DirectSoundClient directSoundClient, int i, XOutputStream xOutputStream) throws IOException {
         if (directSoundClient.isAttached()) {
             return ProcessingResult.PROCESSED_KILL_CONNECTION;
@@ -131,35 +110,13 @@ public class DirectSoundRequestHandler implements RequestHandler<DirectSoundClie
             return ProcessingResult.PROCESSED_KILL_CONNECTION;
         }
         XStreamLock lock = xOutputStream.lock();
-        xOutputStream.writeInt(0);
+        xOutputStream.writeInt(SIZE_OF_INIT_NOTIFY_REQ);
         if (lock != null) {
             lock.close();
         }
         return ProcessingResult.PROCESSED;
-        // throw th;
     }
 
-    /* JADX WARNING: Code restructure failed: missing block: B:11:0x001f, code lost:
-        r4 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:15:0x0023, code lost:
-        if (r2 != null) goto L_0x0025;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:16:0x0025, code lost:
-        if (r3 != null) goto L_0x0027;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:18:?, code lost:
-        r2.close();
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:19:0x002b, code lost:
-        r2 = move-exception;
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:20:0x002c, code lost:
-        r3.addSuppressed(r2);
-     */
-    /* JADX WARNING: Code restructure failed: missing block: B:21:0x0030, code lost:
-        r2.close();
-     */
     private ProcessingResult play(DirectSoundClient directSoundClient, int i, XOutputStream xOutputStream) throws IOException {
         Mask create = Mask.create(PlayFlags.class, i);
         if (create == null) {
@@ -167,12 +124,11 @@ public class DirectSoundRequestHandler implements RequestHandler<DirectSoundClie
         }
         directSoundClient.play(create);
         XStreamLock lock = xOutputStream.lock();
-        xOutputStream.writeInt(0);
+        xOutputStream.writeInt(SIZE_OF_INIT_NOTIFY_REQ);
         if (lock != null) {
             lock.close();
         }
         return ProcessingResult.PROCESSED;
-        // throw th;
     }
 
     private ProcessingResult stop(DirectSoundClient directSoundClient, XOutputStream xOutputStream) throws IOException {
