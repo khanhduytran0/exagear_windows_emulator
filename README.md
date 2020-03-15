@@ -37,5 +37,5 @@ com.github.iwgang:countdownview
 
 # Credits
 - Eltechs for amazing Exagear Windows Emulator.
-- AkiraYuki & 4PDA developers for a mod version.
+- [AkiraYuki](https://www.youtube.com/channel/UCS6lNcr6OwtB4RLNg38a06Q) & [4PDA developers](http://4pda.ru/forum/index.php?showtopic=804309) (MegaFox, Aleksandr27, marian009) for a mod version
 - Jadx, jd-core and CFR for decompiled code.
