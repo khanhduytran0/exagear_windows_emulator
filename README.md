@@ -18,6 +18,7 @@ Exagear Windows Emulator decompiled source code
 - X11 Server didn't work, this made the application useless (feel free to create a pull request to fix).
 - Decompiled source code contains useless code.
 - Experimental features has no function yet.
+- Language only English (will extract other languages later)
 
 # Info about decompiled version
 - Version: 3.0.1, compatible with `main.30.com.eltechs.ed.obb`.
