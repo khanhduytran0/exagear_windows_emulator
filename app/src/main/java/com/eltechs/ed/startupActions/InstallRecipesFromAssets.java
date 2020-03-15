@@ -47,17 +47,17 @@ public class InstallRecipesFromAssets<StateClass extends ExagearImageAware> exte
         }
     }
 	
-	private void copyFolderFromAsset(String itemAsset, File outputDir) {
+	private void copyFolderFromAsset(String itemAsset, File outputFile) {
 		try {
 			AssetManager asset = getAppContext().getAssets();
 			String[] itemList = asset.list(itemAsset);
 			if (itemList.length == 0) {
-				IOStreamHelpers.copy(asset.open(itemAsset), new FileOutputStream(new File(outputDir, itemAsset)));
+				outputFile.getParentFile().mkdir();
+				outputFile.createNewFile();
+				IOStreamHelpers.copy(asset.open(itemAsset), new FileOutputStream(outputFile));
 			} else {
-				outputDir.mkdirs();
-			
 				for (String item : itemList) {
-					copyFolderFromAsset(itemAsset + "/" + item, new File(outputDir, item));
+					copyFolderFromAsset(itemAsset + "/" + item, new File(outputFile, item));
 				}
 			}
 		} catch (Throwable th) {
