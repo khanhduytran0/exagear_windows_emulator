@@ -6,7 +6,6 @@ Exagear Windows Emulator decompiled source code
 
 # Changes on this branch
 - Closing source some components to attempt to make X11 Server working.
-_*Still not work, `<html><body>Guest applications died before showing anything.</body></html>`
 
 # Features
 - Cleaned license check and In-app purchase code. 
@@ -21,6 +20,7 @@ _*Still not work, `<html><body>Guest applications died before showing anything.<
 # Known Issues
 - Decompiled source code contains useless code.
 - Experimental features has no function yet.
+- Language only English (will extract other languages later)
 
 # Info about decompiled version
 - Version: 3.0.1, compatible with `main.30.com.eltechs.ed.obb`.
