@@ -30,7 +30,7 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
     private CountDownTimer periodicIabCheckTimer = new CountDownTimer(COUNT_DOWN_TOTAL, COUNT_DOWN_INTERVAL) {
         public void onTick(long j) {
             XServerDisplayActivity.this.checkUiThread();
-            // MOD: Bypass iab check.
+			// MOD: Bypass iab check.
 			/*
             if (XServerDisplayActivity.this.isActivityResumed()) {
                 XServerDisplayActivity.this.checkIab();
@@ -65,8 +65,9 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
             getWindow().addFlags(128);
             getWindow().addFlags(4194304);
             setContentView(R.layout.main);
-            if (/* checkForSuddenDeath() */ viewOfXServer == null) {
+            if (checkForSuddenDeath()) {
                 this.viewOfXServer = new ViewOfXServer(this, xServerComponent.getXServer(), viewFacade, applicationState.getXServerViewConfiguration());
+                this.periodicIabCheckTimer.start();
                 return;
             }
             return;
@@ -77,8 +78,8 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
         setContentView(R.layout.main);
         if (checkForSuddenDeath()) {
         }
-
-        setXServerDisplayActivityInterfaceOverlay(new TrivialInterfaceOverlay());
+		
+		setXServerDisplayActivityInterfaceOverlay(new TrivialInterfaceOverlay());
     }
 
     /* access modifiers changed from: protected */

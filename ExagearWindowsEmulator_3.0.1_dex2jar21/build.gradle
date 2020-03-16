@@ -1,0 +1,2 @@
+configurations.maybeCreate("default")
+artifacts.add("default", file('ExagearWindowsEmulator_3.0.1_dex2jar21.jar'))
