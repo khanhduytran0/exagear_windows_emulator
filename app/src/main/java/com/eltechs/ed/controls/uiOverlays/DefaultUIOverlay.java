@@ -79,7 +79,7 @@ public class DefaultUIOverlay implements XServerDisplayActivityInterfaceOverlay 
         FrameLayout frameLayout = new FrameLayout(xServerDisplayActivity);
         frameLayout.setLayoutParams(new LayoutParams(-1, -1));
         LinearLayout linearLayout = new LinearLayout(xServerDisplayActivity);
-        linearLayout.setOrientation(0);
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(-1, -1));
         linearLayout.addView(createLeftToolbar());
         linearLayout.addView(this.mTscWidget, new LinearLayout.LayoutParams(0, -1, 1.0f));
@@ -147,9 +147,9 @@ public class DefaultUIOverlay implements XServerDisplayActivityInterfaceOverlay 
         int i = (int) ((isDisplaySmallWidth(displayMetrics) ? sideToolbarWidthSmallDisplayInches : 0.4f) * displayMetrics.xdpi);
         LinearLayout linearLayout = new LinearLayout(this.mHostActivity);
         linearLayout.setLayoutParams(new LinearLayout.LayoutParams(i, -1, 0.0f));
-        linearLayout.setOrientation(1);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
         linearLayout.setBackgroundColor(-10066330);
-        linearLayout.setVisibility(8);
+        linearLayout.setVisibility(View.GONE);
         return linearLayout;
     }
 
@@ -171,7 +171,7 @@ public class DefaultUIOverlay implements XServerDisplayActivityInterfaceOverlay 
         scrollView.setLayoutParams(new LinearLayout.LayoutParams(-1, 0, 1.0f));
         LinearLayout linearLayout = new LinearLayout(this.mHostActivity);
         linearLayout.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-        linearLayout.setOrientation(1);
+        linearLayout.setOrientation(LinearLayout.VERTICAL);
         scrollView.addView(linearLayout);
         return new ScrollArea(scrollView, linearLayout);
     }
@@ -232,19 +232,19 @@ public class DefaultUIOverlay implements XServerDisplayActivityInterfaceOverlay 
 
     /* access modifiers changed from: protected */
     public void setToolbarSideToolbarsButtonVisibility(boolean z) {
-        ((ImageButton) this.mToolbar.findViewById(R.id.button_sidetoolbars)).setVisibility(z ? 0 : 8);
+        ((ImageButton) this.mToolbar.findViewById(R.id.button_sidetoolbars)).setVisibility(z ? View.VISIBLE : View.GONE);
     }
 
     public void toggleToolbar() {
-        this.mToolbar.setVisibility(this.mToolbar.getVisibility() != 0 ? 0 : 8);
+        this.mToolbar.setVisibility(this.mToolbar.getVisibility() != View.VISIBLE ? View.VISIBLE : View.GONE);
     }
 
     public void toggleLeftToolbar() {
-        this.mLeftToolbar.setVisibility(this.mLeftToolbar.getVisibility() != 0 ? 0 : 8);
+        this.mLeftToolbar.setVisibility(this.mLeftToolbar.getVisibility() != View.VISIBLE ? View.VISIBLE : View.GONE);
     }
 
     public void toggleRightToolbar() {
-        this.mRightToolbar.setVisibility(this.mRightToolbar.getVisibility() != 0 ? 0 : 8);
+        this.mRightToolbar.setVisibility(this.mRightToolbar.getVisibility() != View.VISIBLE ? View.VISIBLE : View.GONE);
     }
 
     private static boolean isDisplaySmallHeight(DisplayMetrics displayMetrics) {
