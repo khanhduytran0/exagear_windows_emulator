@@ -27,21 +27,6 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
     private static final int REQUEST_CODE_INFORMER = 10003;
     private Runnable contextMenuRequestHandler;
     private XServerDisplayActivityInterfaceOverlay interfaceOverlay;
-    private CountDownTimer periodicIabCheckTimer = new CountDownTimer(COUNT_DOWN_TOTAL, COUNT_DOWN_INTERVAL) {
-        public void onTick(long j) {
-            XServerDisplayActivity.this.checkUiThread();
-			// MOD: Bypass iab check.
-			/*
-            if (XServerDisplayActivity.this.isActivityResumed()) {
-                XServerDisplayActivity.this.checkIab();
-            }
-			*/
-        }
-
-        public void onFinish() {
-            XServerDisplayActivity.this.periodicIabCheckTimer.start();
-        }
-    };
     private View uiOverlayView;
     private ViewOfXServer viewOfXServer;
 
@@ -56,9 +41,21 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
         ApplicationStateBase applicationState = getApplicationState();
         XServerComponent xServerComponent = (XServerComponent) applicationState.getEnvironment().getComponent(XServerComponent.class);
         Class cls = (Class) getIntent().getSerializableExtra("facadeclass");
+
+        if (cls == null) {
+            /* Always there because decompiled code
+             * 'com.eltechs.axs.activities.StartupActivity'
+             * at declaration of method 'startupFinished(Class)'
+             * returning null.
+             */
+
+            cls = ViewFacade.class;
+        }
+
         if (cls != null) {
             try {
-                viewFacade = (ViewFacade) cls.getDeclaredConstructor(new Class[]{XServer.class, ApplicationStateBase.class}).newInstance(new Object[]{xServerComponent.getXServer(), applicationState});
+                // viewFacade = (ViewFacade) cls.getDeclaredConstructor(new Class[]{XServer.class, ApplicationStateBase.class}).newInstance(new Object[]{xServerComponent.getXServer(), applicationState});
+                viewFacade = new ViewFacade(xServerComponent.getXServer());
             } catch (Exception unused) {
                 Assert.state(false);
             }
@@ -67,7 +64,6 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
             setContentView(R.layout.main);
             if (checkForSuddenDeath()) {
                 this.viewOfXServer = new ViewOfXServer(this, xServerComponent.getXServer(), viewFacade, applicationState.getXServerViewConfiguration());
-                this.periodicIabCheckTimer.start();
                 return;
             }
             return;
@@ -86,10 +82,12 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
     public void onResume() {
         super.onResume();
         if (!checkForSuddenDeath()) {
-            this.contextMenuRequestHandler = NoMenuPopup.INSTANCE;
             buildUI();
-            this.viewOfXServer.onResume();
-            this.uiOverlayView.requestFocus();
+            XServerDisplayActivity.this.viewOfXServer.onResume();
+            XServerDisplayActivity.this.uiOverlayView.requestFocus();
+
+            this.contextMenuRequestHandler = NoMenuPopup.INSTANCE;
+
             AXSEnvironment environment = getApplicationState().getEnvironment();
             if (environment != null) {
                 environment.resumeEnvironment();
@@ -110,7 +108,7 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
     }
 
     private void buildUI() {
-        setContentView(R.layout.main);
+        // setContentView(R.layout.main);
         getRootLayout().addView(this.viewOfXServer);
         this.uiOverlayView = this.interfaceOverlay.attach(this, this.viewOfXServer);
         getRootLayout().addView(this.uiOverlayView);
@@ -142,8 +140,6 @@ public class XServerDisplayActivity<StateClass extends ApplicationStateBase<Stat
         super.onDestroy();
         this.viewOfXServer = null;
         setContentView((View) new TextView(this));
-        this.periodicIabCheckTimer.cancel();
-        this.periodicIabCheckTimer = null;
     }
 
     /* access modifiers changed from: protected */

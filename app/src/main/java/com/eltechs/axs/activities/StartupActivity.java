@@ -190,7 +190,7 @@ public abstract class StartupActivity<StateClass extends ApplicationStateBase<St
             logInfo("Will restart after shutdown.");
 			
 			Intent intent2 = new Intent(this, AndroidHelpers.getAppLaunchActivityClass(this));
-			intent2.setFlags(270565376);
+			intent2.setFlags(0x10208000);
 			startActivity(intent2);
         }
         return true;
@@ -264,9 +264,9 @@ public abstract class StartupActivity<StateClass extends ApplicationStateBase<St
                 context = applicationStateBase.getAndroidApplicationContext();
             }
             Intent intent = new Intent(context, AndroidHelpers.getAppLaunchActivityClass(context));
-            intent.setFlags(1149239296);
+            intent.setFlags(0x44800000); // ??? can't find in Android SDK
             if (!z2) {
-                intent.addFlags(268435456);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             }
             intent.putExtra(SHUTDOWN_REQUEST_FLAG, z ? RESTART_AFTER_SHUTDOWN_FLAG_VALUE : "");
             context.startActivity(intent);
@@ -284,7 +284,7 @@ public abstract class StartupActivity<StateClass extends ApplicationStateBase<St
     /* access modifiers changed from: protected */
     public void startupFinished(Class<?> cls) {
         Intent intent = new Intent(this, this.mainActivityClass);
-        intent.setFlags(65536);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         intent.putExtra("facadeclass", cls);
         startActivity(intent);
     }
